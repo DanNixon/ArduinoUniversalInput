@@ -40,9 +40,15 @@ void setup()
   buttons.removeButton(BUTTON_DOWN);
 
   /*
-   * Set the callback function to handle all button presses and releases
+   * Set the state change callback function to handle all button presses
+   * and releases
    */
-  buttons.setCallback(&button_handler);
+  buttons.setStateChangeCallback(&button_handler);
+
+  /*
+   * Set the state cycle callback to report time a button has been held
+   */
+  buttons.setStateCycleCallback(&state_cycle_handler);
 }
 
 void loop()
@@ -51,6 +57,16 @@ void loop()
    * Poll buttons regularly
    */
   buttons.poll();
+
+  /*
+   * Show the time BUTTON_UP has been held whilst it is being held
+   */
+  if(buttons.getButtonState(BUTTON_UP))
+  {
+    Serial.print("BUTTON_UP held for ");
+    Serial.print(buttons.getTimeSinceLastChange(BUTTON_UP));
+    Serial.println("ms");
+  }
 }
 
 /*
@@ -64,4 +80,16 @@ void button_handler(buttonid_t id, uint8_t state)
     Serial.println(" pressed");
   else
     Serial.println(" released");
+}
+
+/*
+ * Basic handler to print the amount of time a button has been held
+ */
+void state_cycle_handler(buttonid_t id, uint32_t time)
+{
+  Serial.print("Button ");
+  Serial.print(id);
+  Serial.print(" held for ");
+  Serial.print(time);
+  Serial.println("ms");
 }

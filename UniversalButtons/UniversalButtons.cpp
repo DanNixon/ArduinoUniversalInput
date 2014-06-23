@@ -18,7 +18,8 @@ UniversalButtons::UniversalButtons()
   _readPinFunct = NULL;
   _writePinFunct = NULL;
 
-  _callback = NULL;
+  _stateChangeCallback = NULL;
+  _stateCycleCallback = NULL;
 
   _buttonList = NULL;
   _buttonCount = 0;
@@ -56,32 +57,45 @@ uint8_t UniversalButtons::readButtonState(Button *button)
 void UniversalButtons::poll()
 {
   uint8_t buttonState;
-  Button *ptr = _buttonList;
+  Button *button = _buttonList;
 
-  while(ptr)
+  while(button)
   {
-    if((millis() - ptr->lastEdgeTime) > _debounceDelay)
+    if((millis() - button->lastEdgeTime) > _debounceDelay)
     {
-      buttonState = readButtonState(ptr);
+      buttonState = readButtonState(button);
 
-      if(buttonState != ptr->lastState)
+      if(buttonState != button->lastState)
       {
-        ptr->lastEdgeTime = millis();
+        if(_stateChangeCallback)
+          _stateChangeCallback(button->id, buttonState);
 
-        if(_callback)
-          _callback(ptr->id, buttonState);
+        if(!buttonState && _stateCycleCallback)
+        {
+          uint32_t deltaT = millis() - button->lastEdgeTime;
+          _stateCycleCallback(button->id, deltaT);
+        }
+
+        button->lastEdgeTime = millis();
       }
 
-      ptr->lastState = buttonState;
+      button->lastState = buttonState;
     }
 
-    ptr = ptr->next;
+    button = button->next;
   }
 }
 
-void UniversalButtons::setCallback(void (* callback) (buttonid_t bid, uint8_t state))
+void UniversalButtons::setStateChangeCallback(
+    void (* callback)(buttonid_t bid, uint8_t state))
 {
-  _callback = callback;
+  _stateChangeCallback = callback;
+}
+
+void UniversalButtons::setStateCycleCallback(
+    void (* callback)(buttonid_t bid, uint32_t timeHeld))
+{
+  _stateCycleCallback = callback;
 }
 
 void UniversalButtons::buttonListAppend(Button *button)
@@ -105,7 +119,8 @@ void UniversalButtons::buttonListAppend(Button *button)
   _buttonCount++;
 }
 
-Result UniversalButtons::addButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow)
+Result UniversalButtons::addButton(buttonid_t bid, pin_t pin,
+    uint8_t pullup, uint8_t activeLow)
 {
   Button *newButton = new Button;
   newButton->type = TYPE_GPIO_BASIC;
@@ -156,7 +171,8 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
   return RESULT_OK;
 }
 
-Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow)
+Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
+    uint8_t pullup, uint8_t activeLow)
 {
   if(!(_readPinFunct && _writePinFunct))
     return RESULT_NO_CUSTOM_IO;
@@ -186,7 +202,8 @@ Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin)
   return addCustomButton(bid, pin, _defaultPullup, _defaultActiveLow);
 }
 
-Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
+Result UniversalButtons::addCustomButton(buttonid_t bid,
+    pin_t rowPin, pin_t colPin)
 {
   if(!( _readPinFunct && _writePinFunct))
     return RESULT_NO_CUSTOM_IO;
@@ -265,14 +282,29 @@ void UniversalButtons::setDebounceDelay(uint16_t delay)
 
 int8_t UniversalButtons::getButtonState(buttonid_t bid)
 {
-  Button *ptr = _buttonList;
+  Button *button = _buttonList;
   
-  while(ptr)
+  while(button)
   {
-    if(ptr->id == bid)
-      return ptr->lastState;
+    if(button->id == bid)
+      return button->lastState;
 
-    ptr = ptr->next;
+    button = button->next;
+  }
+
+  return -1;
+}
+
+uint32_t UniversalButtons::getTimeSinceLastChange(buttonid_t bid)
+{
+  Button *button = _buttonList;
+  
+  while(button)
+  {
+    if(button->id == bid)
+      return (millis() - button->lastEdgeTime);
+
+    button = button->next;
   }
 
   return -1;

@@ -29,9 +29,10 @@ void setup()
   buttons.addButton(8, 7, 10);
 
   /*
-   * Set the callback function to handle all button presses and releases
+   * Set the state change callback function to handle all button presses
+   * and releases
    */
-  buttons.setCallback(&button_handler);
+  buttons.setStateChangeCallback(&button_handler);
 }
 
 void loop()

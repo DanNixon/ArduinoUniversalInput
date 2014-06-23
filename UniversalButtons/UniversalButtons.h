@@ -12,7 +12,7 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
-#define DEFAULT_DEBOUCE_DELAY 250
+#define DEFAULT_DEBOUCE_DELAY 100
 
 #define DEFAULT_PULLUP 1
 #define DEFAULT_ACTIVE_LOW 1
@@ -68,9 +68,21 @@ class UniversalButtons
     void poll();
 
     /*
-     * Sets the callback function used to handle event driven button input
+     * Sets the callback function used to handle the state of a button changing
+     * i.e. either a push or release of a button
+     * Callback function takes button ID and new state of button
      */
-    void setCallback(void (* callback)(buttonid_t bid, uint8_t state));
+    void setStateChangeCallback(
+        void (* callback)(buttonid_t bid, uint8_t state));
+
+    /*
+     * Sets the callback function used to handle a button being pushed and
+     * released
+     * Callback function takes button ID and length of tiem the button was held
+     * (in milliseconds)
+     */
+    void setStateCycleCallback(void (*callback)(buttonid_t bid,
+          uint32_t timeHeld));
 
     /*
      * Getter and setter for the debounce delay
@@ -127,6 +139,12 @@ class UniversalButtons
     int8_t getButtonState(buttonid_t bid);
 
     /*
+     * Gets the amount of time (in milliseconds) the button has been in it's
+     * current state
+     */
+    uint32_t getTimeSinceLastChange(buttonid_t bid);
+
+    /*
      * Gets the number of buttons currently configured
      */
     uint16_t buttonCount();
@@ -137,10 +155,11 @@ class UniversalButtons
 
     uint16_t _buttonCount;
 
-    void (* _callback)(buttonid_t bid, uint8_t state);
+    void (* _stateChangeCallback)(buttonid_t bid, uint8_t state);
+    void (* _stateCycleCallback)(buttonid_t bid, uint32_t timeHeld);
 
-    uint8_t (* _readPinFunct) (pin_t pin);
-    void (* _writePinFunct) (pin_t pin, uint8_t state);
+    uint8_t (* _readPinFunct)(pin_t pin);
+    void (* _writePinFunct)(pin_t pin, uint8_t state);
 
     uint8_t _defaultActiveLow;
     uint8_t _defaultPullup;
