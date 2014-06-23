@@ -1,7 +1,7 @@
 /*
  * UniversalButtons button input library
  *
- * UniversalButtons
+ * ArduinoUniversalButtons
  * Dan Nixon, dan-nixon.com
  * 23/06/2014
  */
@@ -11,7 +11,15 @@
 UniversalButtons::UniversalButtons()
 {
   _debounceDelay = DEFAULT_DEBOUCE_DELAY;
+
+  _defaultPullup = DEFAULT_PULLUP;
+  _defaultActiveLow = DEFAULT_ACTIVE_LOW;
+
+  _readPinFunct = NULL;
+  _writePinFunct = NULL;
+
   _callback = NULL;
+
   _buttonList = NULL;
   _buttonCount = 0;
 }
@@ -23,20 +31,26 @@ UniversalButtons::~UniversalButtons()
 
 uint8_t UniversalButtons::readButtonState(Button *button)
 {
+  uint8_t state;
+
   switch(button->type)
   {
     case TYPE_GPIO_BASIC:
     case TYPE_CUSTOM_BASIC:
-      return !(button->pinRead(button->rowPin));
+      state = button->pinRead(button->rowPin);
+      if(button->activeLow)
+        state = !state;
+      break;
 
     case TYPE_GPIO_MATRIX:
     case TYPE_CUSTOM_MATRIX:
       button->pinWrite(button->columnPin, LOW);
-      uint8_t state = !(button->pinRead(button->rowPin));
+      state = !(button->pinRead(button->rowPin));
       button->pinWrite(button->columnPin, HIGH);
-      return state;
       break;
   }
+
+  return state;
 }
 
 void UniversalButtons::poll()
@@ -91,7 +105,7 @@ void UniversalButtons::buttonListAppend(Button *button)
   _buttonCount++;
 }
 
-Result UniversalButtons::addButton(buttonid_t bid, pin_t pin)
+Result UniversalButtons::addButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow)
 {
   Button *newButton = new Button;
   newButton->type = TYPE_GPIO_BASIC;
@@ -100,14 +114,23 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t pin)
   newButton->columnPin = -1;
   newButton->pinRead = (uint8_t (*) (pin_t)) &digitalRead;
   newButton->pinWrite = NULL;
+  newButton->activeLow = activeLow;
   newButton->next = NULL;
 
   pinMode(pin, INPUT);
-  digitalWrite(pin, HIGH);
+  if(pullup)
+  {
+    digitalWrite(pin, HIGH);
+  }
 
   buttonListAppend(newButton);
 
   return RESULT_OK;
+}
+
+Result UniversalButtons::addButton(buttonid_t bid, pin_t pin)
+{
+  return addButton(bid, pin, _defaultPullup, _defaultActiveLow);
 }
 
 Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
@@ -119,6 +142,7 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
   newButton->columnPin = colPin;
   newButton->pinRead = (uint8_t (*) (pin_t)) &digitalRead;
   newButton->pinWrite = &digitalWrite;
+  newButton->activeLow = 0;
   newButton->next = NULL;
 
   pinMode(rowPin, INPUT);
@@ -132,32 +156,49 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
   return RESULT_OK;
 }
 
-Result UniversalButtons::addButton(buttonid_t bid, pin_t pin, uint8_t (* pinRead) (pin_t pin))
+Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow)
 {
+  if(!(_readPinFunct && _writePinFunct))
+    return RESULT_NO_CUSTOM_IO;
+
   Button *newButton = new Button;
   newButton->type = TYPE_CUSTOM_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
   newButton->columnPin = -1;
-  newButton->pinRead = pinRead;
-  newButton->pinWrite = NULL;
+  newButton->pinRead = _readPinFunct;
+  newButton->pinWrite = _writePinFunct;
+  newButton->activeLow = activeLow;
   newButton->next = NULL;
-  
+ 
+  if(pullup)
+  {
+    _writePinFunct(pin, 1);
+  }
+
   buttonListAppend(newButton);
 
   return RESULT_OK;
 }
 
-Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin,
-    uint8_t (* pinRead) (pin_t pin), void (* pinWrite) (pin_t pin, uint8_t state))
+Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin)
 {
+  return addCustomButton(bid, pin, _defaultPullup, _defaultActiveLow);
+}
+
+Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
+{
+  if(!( _readPinFunct && _writePinFunct))
+    return RESULT_NO_CUSTOM_IO;
+
   Button *newButton = new Button;
   newButton->type = TYPE_CUSTOM_MATRIX;
   newButton->id = bid;
   newButton->rowPin = rowPin;
   newButton->columnPin = colPin;
-  newButton->pinRead = pinRead;
-  newButton->pinWrite = pinWrite;
+  newButton->pinRead = _readPinFunct;
+  newButton->pinWrite = _writePinFunct;
+  newButton->activeLow = 0;
   newButton->next = NULL;
 
   buttonListAppend(newButton);
@@ -240,4 +281,17 @@ int8_t UniversalButtons::getButtonState(buttonid_t bid)
 uint16_t UniversalButtons::buttonCount()
 {
   return _buttonCount;
+}
+
+void UniversalButtons::setCustomIO(uint8_t (* readPin) (pin_t pin),
+    void (* writePin) (pin_t pin, uint8_t state))
+{
+  _readPinFunct = readPin;
+  _writePinFunct = writePin;
+}
+
+void UniversalButtons::setDefaultButtonConfig(uint8_t pullup, uint8_t activeLow)
+{
+  _defaultPullup = pullup;
+  _defaultActiveLow = activeLow;
 }

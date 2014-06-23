@@ -3,7 +3,7 @@
  * Basic example showing time taken to poll buttons
  * The current code sits at around 230us on an Arduino UNo running at 16MHz
  *
- * UniversalButtons
+ * ArduinoUniversalButtons
  * Dan Nixon, dan-nixon.com
  * 23/06/2014
  */

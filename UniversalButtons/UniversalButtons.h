@@ -1,7 +1,7 @@
 /*
  * UniversalButtons button input library
  *
- * UniversalButtons
+ * ArduinoUniversalButtons
  * Dan Nixon, dan-nixon.com
  * 23/06/2014
  */
@@ -13,6 +13,9 @@
 #include <inttypes.h>
 
 #define DEFAULT_DEBOUCE_DELAY 250
+
+#define DEFAULT_PULLUP 1
+#define DEFAULT_ACTIVE_LOW 1
 
 typedef uint16_t buttonid_t;
 typedef uint8_t pin_t;
@@ -30,7 +33,8 @@ enum Result
   RESULT_OK,
   RESULT_BUTTON_ALREADY_EXISTS,
   RESULT_NO_SUCH_BUTTON,
-  RESULT_INVALID_PARAMETERS
+  RESULT_INVALID_PARAMETERS,
+  RESULT_NO_CUSTOM_IO
 };
 
 struct Button
@@ -41,6 +45,8 @@ struct Button
   uint8_t rowPin;
   uint8_t columnPin;
   
+  uint8_t activeLow;
+
   uint8_t (* pinRead) (pin_t pin);
   void (* pinWrite) (pin_t pin, uint8_t state);
 
@@ -73,9 +79,23 @@ class UniversalButtons
     void setDebounceDelay(uint16_t delay);
 
     /*
+     * Setter for custom IO logic functions
+     * Only effects calls makde to addCustomButton() after it is called
+     */
+    void setCustomIO(uint8_t (* readPin) (pin_t pin),
+        void (* writePin) (pin_t pin, uint8_t state));
+
+    /*
+     * Sets the default logic configuration for simple buttons
+     */
+    void setDefaultButtonConfig(uint8_t pullup, uint8_t activeLow);
+
+    /*
      * Adds a new basic pull high or pull low button using the board IO
      */
     Result addButton(buttonid_t bid, pin_t pin);
+    Result addButton(buttonid_t bid, pin_t pin,
+        uint8_t pullup, uint8_t activeLow);
 
     /*
      * Adds a new matrix button using the board IO
@@ -83,16 +103,18 @@ class UniversalButtons
     Result addButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
 
     /*
-     * Adds a new basic button using a custom IO function
+     * Adds a new basic button using a custom IO function defined with
+     * setCustomIO()
      */
-    Result addButton(buttonid_t bid, pin_t pin,
-        uint8_t (* pinRead) (pin_t pin));
+    Result addCustomButton(buttonid_t bid, pin_t pin);
+    Result addCustomButton(buttonid_t bid, pin_t pin,
+        uint8_t pullup, uint8_t activeLow);
 
     /*
-     * Adds a new matrix button using a custom IO function
+     * Adds a new matrix button using a custom IO function defined with
+     * setCustomIO()
      */
-    Result addButton(buttonid_t bid, pin_t rowPin, pin_t colPin,
-        uint8_t (* pinRead) (pin_t pin), void (* pinSet) (pin_t pin, uint8_t state));
+    Result addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
 
     /*
      * Removes a button
@@ -116,6 +138,12 @@ class UniversalButtons
     uint16_t _buttonCount;
 
     void (* _callback)(buttonid_t bid, uint8_t state);
+
+    uint8_t (* _readPinFunct) (pin_t pin);
+    void (* _writePinFunct) (pin_t pin, uint8_t state);
+
+    uint8_t _defaultActiveLow;
+    uint8_t _defaultPullup;
 
     uint16_t _debounceDelay;
 

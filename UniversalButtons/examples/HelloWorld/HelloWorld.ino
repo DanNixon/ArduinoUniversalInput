@@ -1,7 +1,7 @@
 /*
  * Basic example of UniversalButtons usage
  *
- * UniversalButtons
+ * ArduinoUniversalButtons
  * Dan Nixon, dan-nixon.com
  * 23/06/2014
  */

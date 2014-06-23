@@ -1,7 +1,7 @@
 /*
  * Switch matrix example
  *
- * UniversalButtons
+ * ArduinoUniversalButtons
  * Dan Nixon, dan-nixon.com
  * 23/06/2014
  */
