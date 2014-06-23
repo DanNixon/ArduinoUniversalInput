@@ -126,7 +126,7 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t pin,
   newButton->type = TYPE_GPIO_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
-  newButton->columnPin = -1;
+  newButton->columnPin = 0;
   newButton->pinRead = (uint8_t (*) (pin_t)) &digitalRead;
   newButton->pinWrite = NULL;
   newButton->activeLow = activeLow;
@@ -181,7 +181,7 @@ Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
   newButton->type = TYPE_CUSTOM_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
-  newButton->columnPin = -1;
+  newButton->columnPin = 0;
   newButton->pinRead = _readPinFunct;
   newButton->pinWrite = _writePinFunct;
   newButton->activeLow = activeLow;
@@ -307,7 +307,7 @@ uint32_t UniversalButtons::getTimeSinceLastChange(buttonid_t bid)
     button = button->next;
   }
 
-  return -1;
+  return 0;
 }
 
 uint16_t UniversalButtons::buttonCount()
