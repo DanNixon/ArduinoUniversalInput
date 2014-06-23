@@ -6,9 +6,13 @@ Lately I have seen myself write almost identical code for managing button presse
 Functionality
 -------------
 
-On a per button basis the library is very similar to the [Button](http://playground.arduino.cc/Code/Button) library, in that it allows easy access to past states and event driven input handling.
+This library is very similar to the [Button](http://playground.arduino.cc/Code/Button) library on a per abstract button basis, however this library also offers the following:
 
-The main three differences are that it allows the configuration of both matrix wired and basic pull high/pull low switches on the same set of handlers and allows configuration of unlimited buttons per object.   
-Why is that important? I believe it helps to keep code tidier.
+*  The ability to configure switch multiple matrices and simple pull high/low buttons withing the same handler wrapper
+*  The ability to set the pin configuration (pullup, active low) per button
+*  The ability to define custom IO functions for both simple buttons and matrices, allowing the library to work with whatever custom hardware is driving your switches
 
-And the ability for the user to define their own function for checking the state of a button (or setting/reading matrix columns/rows), this makes the library compatible with any large matrix configurations which use dedicated hardware (e.g. shift registers).
+Issues
+------
+
+Because of the way I store switch configurations, matrix polling is quite non optimal, the largest matrix I have used was 3x26 which had an average poll time of around 670us. I may change the way matrix polling works in the future if this proves to be an issue.
