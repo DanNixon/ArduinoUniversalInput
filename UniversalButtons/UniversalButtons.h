@@ -12,7 +12,7 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
-#define DEFAULT_DEBOUCE_DELAY 100
+#define DEFAULT_DEBOUNCE_DELAY 100
 
 #define DEFAULT_PULLUP 1
 #define DEFAULT_ACTIVE_LOW 1
@@ -42,8 +42,8 @@ struct Button
   buttonid_t id;
   ButtonType type;
   
-  uint8_t rowPin;
-  uint8_t columnPin;
+  pin_t rowPin;
+  pin_t columnPin;
   
   uint8_t activeLow;
 

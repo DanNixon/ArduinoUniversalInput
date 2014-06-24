@@ -10,7 +10,7 @@
 
 UniversalButtons::UniversalButtons()
 {
-  _debounceDelay = DEFAULT_DEBOUCE_DELAY;
+  _debounceDelay = DEFAULT_DEBOUNCE_DELAY;
 
   _defaultPullup = DEFAULT_PULLUP;
   _defaultActiveLow = DEFAULT_ACTIVE_LOW;
