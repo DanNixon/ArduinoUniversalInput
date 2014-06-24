@@ -1,0 +1,27 @@
+#######################################
+# Syntax Coloring for UniveralButtons
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+UniversalButtons	KEYWORD1
+
+#######################################
+# Functions (KEYWORD2)
+#######################################
+
+poll	KEYWORD2
+setStateChangeCallback	KEYWORD2
+setStateCycleCallback	KEYWORD2
+getDebounceDelay	KEYWORD2
+setDebounceDelay	KEYWORD2
+setCustomIO	KEYWORD2
+setDefaultButtonConfig	KEYWORD2
+addButton	KEYWORD2
+addCustomButton	KEYWORD2
+removeButton	KEYWORD2
+getButtonState	KEYWORD2
+getTimeSinceLastChange	KEYWORD2
+buttonCount	KEYWORD2
