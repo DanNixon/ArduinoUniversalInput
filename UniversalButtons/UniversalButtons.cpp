@@ -148,6 +148,11 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t pin)
   return addButton(bid, pin, _defaultPullup, _defaultActiveLow);
 }
 
+Result UniversalButtons::addButton(pin_t pin)
+{
+  return addButton(pin, pin, _defaultPullup, _defaultActiveLow);
+}
+
 Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
 {
   Button *newButton = new Button;
@@ -156,7 +161,7 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
   newButton->rowPin = rowPin;
   newButton->columnPin = colPin;
   newButton->pinRead = (uint8_t (*) (pin_t)) &digitalRead;
-  newButton->pinWrite = &digitalWrite;
+  newButton->pinWrite = (void (*) (pin_t, uint8_t)) &digitalWrite;
   newButton->activeLow = 0;
   newButton->next = NULL;
 
@@ -186,7 +191,7 @@ Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
   newButton->pinWrite = _writePinFunct;
   newButton->activeLow = activeLow;
   newButton->next = NULL;
- 
+
   if(pullup)
   {
     _writePinFunct(pin, 1);
@@ -266,7 +271,7 @@ Result UniversalButtons::removeButton(buttonid_t bid)
       current = current->next;
     }
   }
- 
+
   return RESULT_NO_SUCH_BUTTON;
 }
 
@@ -283,7 +288,7 @@ void UniversalButtons::setDebounceDelay(uint16_t delay)
 int8_t UniversalButtons::getButtonState(buttonid_t bid)
 {
   Button *button = _buttonList;
-  
+
   while(button)
   {
     if(button->id == bid)
@@ -298,7 +303,7 @@ int8_t UniversalButtons::getButtonState(buttonid_t bid)
 uint32_t UniversalButtons::getTimeSinceLastChange(buttonid_t bid)
 {
   Button *button = _buttonList;
-  
+
   while(button)
   {
     if(button->id == bid)

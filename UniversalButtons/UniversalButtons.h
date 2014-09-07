@@ -41,10 +41,10 @@ struct Button
 {
   buttonid_t id;
   ButtonType type;
-  
+
   pin_t rowPin;
   pin_t columnPin;
-  
+
   uint8_t activeLow;
 
   uint8_t (* pinRead) (pin_t pin);
@@ -105,6 +105,7 @@ class UniversalButtons
     /*
      * Adds a new basic pull high or pull low button using the board IO
      */
+    Result addButton(pin_t pin);
     Result addButton(buttonid_t bid, pin_t pin);
     Result addButton(buttonid_t bid, pin_t pin,
         uint8_t pullup, uint8_t activeLow);
