@@ -21,38 +21,38 @@
 
 using namespace UniversalInput;
 
+typedef uint16_t buttonid_t;
+
+enum ButtonType
+{
+  TYPE_GPIO_BASIC,
+  TYPE_GPIO_MATRIX,
+  TYPE_CUSTOM_BASIC,
+  TYPE_CUSTOM_MATRIX
+};
+
+struct Button
+{
+  buttonid_t id;
+  ButtonType type;
+
+  pin_t rowPin;
+  pin_t columnPin;
+
+  uint8_t activeLow;
+
+  uint8_t (* pinRead) (pin_t pin);
+  void (* pinWrite) (pin_t pin, uint8_t state);
+
+  uint8_t lastState;
+  uint32_t lastEdgeTime;
+
+  Button *next;
+};
+
 class UniversalButtons
 {
   public:
-    typedef uint16_t buttonid_t;
-
-    enum ButtonType
-    {
-      TYPE_GPIO_BASIC,
-      TYPE_GPIO_MATRIX,
-      TYPE_CUSTOM_BASIC,
-      TYPE_CUSTOM_MATRIX
-    };
-
-    struct Button
-    {
-      buttonid_t id;
-      ButtonType type;
-
-      pin_t rowPin;
-      pin_t columnPin;
-
-      uint8_t activeLow;
-
-      uint8_t (* pinRead) (pin_t pin);
-      void (* pinWrite) (pin_t pin, uint8_t state);
-
-      uint8_t lastState;
-      uint32_t lastEdgeTime;
-
-      Button *next;
-    };
-
     UniversalButtons();
     ~UniversalButtons();
 

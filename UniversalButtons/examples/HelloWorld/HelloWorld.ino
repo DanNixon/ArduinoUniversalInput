@@ -6,6 +6,7 @@
  * 23/06/2014
  */
 
+#include "UniversalInput.h"
 #include "UniversalButtons.h"
 
 UniversalButtons buttons;
