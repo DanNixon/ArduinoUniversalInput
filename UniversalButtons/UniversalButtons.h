@@ -9,6 +9,7 @@
 #ifndef UNIVERSAL_BUTTONS_H
 #define UNIVERSAL_BUTTONS_H
 
+#include "UniversalInput.h"
 #include <Arduino.h>
 #include <inttypes.h>
 
@@ -17,48 +18,41 @@
 #define DEFAULT_PULLUP 1
 #define DEFAULT_ACTIVE_LOW 1
 
-typedef uint16_t buttonid_t;
-typedef uint8_t pin_t;
 
-enum ButtonType
-{
-  TYPE_GPIO_BASIC,
-  TYPE_GPIO_MATRIX,
-  TYPE_CUSTOM_BASIC,
-  TYPE_CUSTOM_MATRIX
-};
-
-enum Result
-{
-  RESULT_OK,
-  RESULT_BUTTON_ALREADY_EXISTS,
-  RESULT_NO_SUCH_BUTTON,
-  RESULT_INVALID_PARAMETERS,
-  RESULT_NO_CUSTOM_IO
-};
-
-struct Button
-{
-  buttonid_t id;
-  ButtonType type;
-
-  pin_t rowPin;
-  pin_t columnPin;
-
-  uint8_t activeLow;
-
-  uint8_t (* pinRead) (pin_t pin);
-  void (* pinWrite) (pin_t pin, uint8_t state);
-
-  uint8_t lastState;
-  uint32_t lastEdgeTime;
-
-  Button *next;
-};
+using namespace UniversalInput;
 
 class UniversalButtons
 {
   public:
+    typedef uint16_t buttonid_t;
+
+    enum ButtonType
+    {
+      TYPE_GPIO_BASIC,
+      TYPE_GPIO_MATRIX,
+      TYPE_CUSTOM_BASIC,
+      TYPE_CUSTOM_MATRIX
+    };
+
+    struct Button
+    {
+      buttonid_t id;
+      ButtonType type;
+
+      pin_t rowPin;
+      pin_t columnPin;
+
+      uint8_t activeLow;
+
+      uint8_t (* pinRead) (pin_t pin);
+      void (* pinWrite) (pin_t pin, uint8_t state);
+
+      uint8_t lastState;
+      uint32_t lastEdgeTime;
+
+      Button *next;
+    };
+
     UniversalButtons();
     ~UniversalButtons();
 
