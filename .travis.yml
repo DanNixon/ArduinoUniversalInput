@@ -1,0 +1,14 @@
+language: cpp
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install -y arduino python-pip
+  - sudo pip install ino
+
+script:
+  - ./.generate_and_build.sh UniversalButtons/examples/HelloWorld
+  - ./.generate_and_build.sh UniversalButtons/examples/MatrixExample
+  - ./.generate_and_build.sh UniversalButtons/examples/PerformanceTest
+
+os:
+  - linux
