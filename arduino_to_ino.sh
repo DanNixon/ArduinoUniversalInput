@@ -43,9 +43,9 @@ shift $((OPTIND-1))
 
 # Do verbose stuff
 if [ $verbose -eq 1 ]; then
-  echo $arduino_project_dir
-  echo $ino_project_dir
-  echo ${libraries[@]}
+  echo "Arduino project directory: $arduino_project_dir"
+  echo "Ino project directory: $ino_project_dir"
+  echo "Arduino library directories: ${libraries[@]}"
 fi
 
 # CHeck the inotool project folder does not already exist
