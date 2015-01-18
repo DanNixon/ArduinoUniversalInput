@@ -6,9 +6,9 @@ install:
   - sudo pip install ino
 
 script:
-  - .generate_and_build.sh UniversalButtons/examples/HelloWorld
-  - .generate_and_build.sh UniversalButtons/examples/MatrixExample
-  - .generate_and_build.sh UniversalButtons/examples/PerformanceTest
+  - ./.generate_and_build.sh UniversalButtons/examples/HelloWorld
+  - ./.generate_and_build.sh UniversalButtons/examples/MatrixExample
+  - ./.generate_and_build.sh UniversalButtons/examples/PerformanceTest
 
 os:
   - linux
