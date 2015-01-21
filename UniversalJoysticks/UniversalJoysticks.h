@@ -9,6 +9,9 @@
 #include "JoystickTypes.h"
 
 
+using UniversalInput::pin_t;
+
+
 struct Joystick
 {
   joystickid_t id;
