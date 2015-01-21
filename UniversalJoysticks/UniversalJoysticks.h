@@ -3,38 +3,21 @@
 
 #include <Arduino.h>
 #include <inttypes.h>
+#include <UniversalInput.h>
 
-#define DEFAULT_DELTA_THRESHOLD 10
+#include "JoystickConfig.h"
+#include "JoystickTypes.h"
 
-typedef uint16_t joystickid_t;
-typedef int32_t joystickvalue_t;
-typedef uint8_t pin_t;
-
-struct JoystickConfig
-{
-  joystickvalue_t toRangeHigh;
-  joystickvalue_t toRangeLow;
-
-  int32_t fromRangeHigh;
-  int32_t fromRangeLow;
-
-  int32_t centrePoint;
-
-  int32_t deadBandWidthHigh;
-  int32_t deadBandWidthCentre;
-  int32_t deadBandWidthLow;
-
-  joystickvalue_t deltaThreshold;
-};
 
 struct Joystick
 {
-  buttonid_t id;
+  joystickid_t id;
   JoystickConfig *config;
   joystickvalue_t (* adcRead) (pin_t pin);
   joystickvalue_t lastValue;
   Joystick *next;
 };
+
 
 class UniversalJoysticks
 {
@@ -47,24 +30,30 @@ class UniversalJoysticks
     void setValueChangeCallback(void (* callback)(joystickid_t jid, joystickvalue_t value));
 
     JoystickConfig *getDefaultConfig();
+    void setDefaultConfig(JoystickConfig *config);
+
     JoystickConfig *getConfig(joystickid_t jid);
 
     void setCustomIO(int32_t (* readADC)(pin_t pin));
 
-    void addJoystick(pin_t pin);
-    void addJoystick(joystickid_t jid, pin_t pin);
+    UniversalInput::Result addJoystick(pin_t pin);
+    UniversalInput::Result addJoystick(joystickid_t jid, pin_t pin);
+
+    UniversalInput::Result addCustomJoystick(pin_t pin);
+    UniversalInput::Result addCustomJoystick(joystickid_t jid, pin_t pin);
 
     joystickvalue_t getJoystickValue(joystickid_t jid);
 
     uint16_t joystickCount();
 
   private:
-    JoystickConfig defaultConfig;
+    JoystickConfig *m_defaultConfig;
 
-    int32_t (* _readADC)(pin_t pin);
+    int32_t (* m_readADC)(pin_t pin);
 
-    uint16_t _joystickCount;
-    Joystick *_joystickList;
+    uint16_t m_joystickCount;
+    Joystick *m_joystickList;
+
 };
 
 #endif

@@ -23,7 +23,7 @@ project_dir="$1"
 project_name=$(basename $project_dir)
 
 # Generate the inotool project
-./arduino_to_ino.sh -v -a "$project_dir" -i "$project_name" -l UniversalInput -l UniversalButtons
+./arduino_to_ino.sh -v -a "$project_dir" -i "$project_name" -l UniversalInput -l UniversalButtons -l UniversalJoysticks
 
 cd "$project_name"
 
