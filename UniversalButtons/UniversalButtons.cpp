@@ -233,7 +233,7 @@ Result UniversalButtons::removeButton(buttonid_t bid)
 {
   if(_buttonCount == 0)
   {
-    return RESULT_NO_SUCH_BUTTON;
+    return NO_SUCH_DEVICE;
   }
   if(_buttonCount == 1)
   {
@@ -273,7 +273,7 @@ Result UniversalButtons::removeButton(buttonid_t bid)
     }
   }
 
-  return RESULT_NO_SUCH_BUTTON;
+  return NO_SUCH_DEVICE;
 }
 
 uint16_t UniversalButtons::getDebounceDelay()

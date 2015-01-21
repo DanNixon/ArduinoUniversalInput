@@ -1,6 +1,9 @@
 #include "JoystickConfig.h"
 
 
+using namespace UniversalInput;
+
+
 JoystickConfig::JoystickConfig() :
   m_toRangeHigh(100), m_toRangeLow(-100),
 
@@ -22,4 +25,101 @@ joystickvalue_t JoystickConfig::convertRaw(int32_t value)
 {
   //TODO
   return value;
+}
+
+
+Result JoystickConfig::setToRangeLow(joystickvalue_t value)
+{
+  if(value >= getToRangeHigh())
+    return RESULT_OUT_OF_RANGE;
+
+  m_fromRangeLow = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setToRangeHigh(joystickvalue_t value)
+{
+  if(value <= getToRangeLow())
+    return RESULT_OUT_OF_RANGE;
+
+  m_toRangeHigh = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setFromRangeLow(int32_t value)
+{
+  if(value >= getFromRangeHigh())
+    return RESULT_OUT_OF_RANGE;
+
+  m_fromRangeLow = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setFromRangeHigh(int32_t value)
+{
+  if(value <= getFromRangeLow())
+    return RESULT_OUT_OF_RANGE;
+
+  m_fromRangeHigh = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setCentrePoint(int32_t value)
+{
+  if(value < getFromRangeLow() || value > getFromRangeHigh())
+    return RESULT_OUT_OF_RANGE;
+
+  m_centrePoint = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setLowerDeadBandWidth(int32_t value)
+{
+  if(value <= 0)
+    return RESULT_OUT_OF_RANGE;
+
+  m_deadBandWidthLow = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setCentreDeadBandWIdth(int32_t value)
+{
+  if(value <= 0)
+    return RESULT_OUT_OF_RANGE;
+
+  m_deadBandWidthCentre = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setUpperDeadBandWidth(int32_t value)
+{
+  if(value <= 0)
+    return RESULT_OUT_OF_RANGE;
+
+  m_deadBandWidthHigh = value;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setPolarity(joystickpolaity_t polarity)
+{
+  m_polarity = polarity;
+  return RESULT_OK;
+}
+
+
+Result JoystickConfig::setDeltaThreshold(joystickvalue_t threshold)
+{
+  if(threshold <= 0)
+    return RESULT_OUT_OF_RANGE;
+
+  m_deltaThreshold = threshold;
+  return RESULT_OK;
 }

@@ -27,7 +27,7 @@ class UniversalJoysticks
 
     void poll();
 
-    void setValueChangeCallback(void (* callback)(joystickid_t jid, joystickvalue_t value));
+    void setValueChangeCallback(void (* callback)(joystickid_t jid, joystickvalue_t value, joystickvalue_t delta));
 
     JoystickConfig *getDefaultConfig();
     void setDefaultConfig(JoystickConfig *config);
@@ -50,6 +50,7 @@ class UniversalJoysticks
     JoystickConfig *m_defaultConfig;
 
     int32_t (* m_readADC)(pin_t pin);
+    void (* m_valueChangeCallback)(joystickid_t jid, joystickvalue_t value, joystickvalue_t delta);
 
     uint16_t m_joystickCount;
     Joystick *m_joystickList;

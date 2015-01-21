@@ -25,9 +25,9 @@ void UniversalJoysticks::poll()
 }
 
 
-void UniversalJoysticks::setValueChangeCallback(void (* callback)(joystickid_t jid, joystickvalue_t value))
+void UniversalJoysticks::setValueChangeCallback(void (* callback)(joystickid_t jid, joystickvalue_t value, joystickvalue_t delta))
 {
-  //TODO
+  m_valueChangeCallback = callback;
 }
 
 
