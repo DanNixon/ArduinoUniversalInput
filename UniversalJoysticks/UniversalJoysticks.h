@@ -16,6 +16,7 @@ struct Joystick
 {
   joystickid_t id;
   JoystickConfig *config;
+  pin_t adcPin;
   joystickvalue_t (* adcRead) (pin_t pin);
   joystickvalue_t lastValue;
   Joystick *next;
@@ -37,7 +38,7 @@ class UniversalJoysticks
 
     JoystickConfig *getConfig(joystickid_t jid);
 
-    void setCustomIO(int32_t (* readADC)(pin_t pin));
+    void setCustomIO(joystickraw_t (* readADC)(pin_t pin));
 
     UniversalInput::Result addJoystick(pin_t pin);
     UniversalInput::Result addJoystick(joystickid_t jid, pin_t pin);
@@ -45,14 +46,18 @@ class UniversalJoysticks
     UniversalInput::Result addCustomJoystick(pin_t pin);
     UniversalInput::Result addCustomJoystick(joystickid_t jid, pin_t pin);
 
+    UniversalInput::Result removeJoystick(joystickid_t jid);
+
     joystickvalue_t getJoystickValue(joystickid_t jid);
 
     uint16_t joystickCount();
 
   private:
+    void joystickListAppend(Joystick *joystick);
+
     JoystickConfig *m_defaultConfig;
 
-    int32_t (* m_readADC)(pin_t pin);
+    joystickraw_t (* m_readADC)(pin_t pin);
     void (* m_valueChangeCallback)(joystickid_t jid, joystickvalue_t value, joystickvalue_t delta);
 
     uint16_t m_joystickCount;

@@ -21,7 +21,7 @@ JoystickConfig::JoystickConfig() :
 }
 
 
-joystickvalue_t JoystickConfig::convertRaw(int32_t value)
+joystickvalue_t JoystickConfig::convertRaw(joystickraw_t value)
 {
   //TODO
   return value;
@@ -48,7 +48,7 @@ Result JoystickConfig::setToRangeHigh(joystickvalue_t value)
 }
 
 
-Result JoystickConfig::setFromRangeLow(int32_t value)
+Result JoystickConfig::setFromRangeLow(joystickraw_t value)
 {
   if(value >= getFromRangeHigh())
     return RESULT_OUT_OF_RANGE;
@@ -58,7 +58,7 @@ Result JoystickConfig::setFromRangeLow(int32_t value)
 }
 
 
-Result JoystickConfig::setFromRangeHigh(int32_t value)
+Result JoystickConfig::setFromRangeHigh(joystickraw_t value)
 {
   if(value <= getFromRangeLow())
     return RESULT_OUT_OF_RANGE;
@@ -68,7 +68,7 @@ Result JoystickConfig::setFromRangeHigh(int32_t value)
 }
 
 
-Result JoystickConfig::setCentrePoint(int32_t value)
+Result JoystickConfig::setCentrePoint(joystickraw_t value)
 {
   if(value < getFromRangeLow() || value > getFromRangeHigh())
     return RESULT_OUT_OF_RANGE;
@@ -78,7 +78,7 @@ Result JoystickConfig::setCentrePoint(int32_t value)
 }
 
 
-Result JoystickConfig::setLowerDeadBandWidth(int32_t value)
+Result JoystickConfig::setLowerDeadBandWidth(joystickraw_t value)
 {
   if(value <= 0)
     return RESULT_OUT_OF_RANGE;
@@ -88,7 +88,7 @@ Result JoystickConfig::setLowerDeadBandWidth(int32_t value)
 }
 
 
-Result JoystickConfig::setCentreDeadBandWIdth(int32_t value)
+Result JoystickConfig::setCentreDeadBandWIdth(joystickraw_t value)
 {
   if(value <= 0)
     return RESULT_OUT_OF_RANGE;
@@ -98,7 +98,7 @@ Result JoystickConfig::setCentreDeadBandWIdth(int32_t value)
 }
 
 
-Result JoystickConfig::setUpperDeadBandWidth(int32_t value)
+Result JoystickConfig::setUpperDeadBandWidth(joystickraw_t value)
 {
   if(value <= 0)
     return RESULT_OUT_OF_RANGE;

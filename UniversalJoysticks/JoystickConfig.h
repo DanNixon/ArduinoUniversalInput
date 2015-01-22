@@ -19,7 +19,7 @@ class JoystickConfig
   public:
     JoystickConfig();
 
-    joystickvalue_t convertRaw(int32_t value);
+    joystickvalue_t convertRaw(joystickraw_t value);
 
     Result setToRangeLow(joystickvalue_t value);
     joystickvalue_t getToRangeLow() { return m_toRangeLow; }
@@ -27,23 +27,23 @@ class JoystickConfig
     Result setToRangeHigh(joystickvalue_t value);
     joystickvalue_t getToRangeHigh() { return m_toRangeHigh; }
 
-    Result setFromRangeLow(int32_t value);
-    int32_t getFromRangeLow() { return m_fromRangeLow; }
+    Result setFromRangeLow(joystickraw_t value);
+    joystickraw_t getFromRangeLow() { return m_fromRangeLow; }
 
-    Result setFromRangeHigh(int32_t value);
-    int32_t getFromRangeHigh() { return m_fromRangeHigh; }
+    Result setFromRangeHigh(joystickraw_t value);
+    joystickraw_t getFromRangeHigh() { return m_fromRangeHigh; }
 
-    Result setCentrePoint(int32_t value);
-    int32_t getCentrePoint() { return m_centrePoint; }
+    Result setCentrePoint(joystickraw_t value);
+    joystickraw_t getCentrePoint() { return m_centrePoint; }
 
-    Result setLowerDeadBandWidth(int32_t value);
-    int32_t getLowerDeadBandWidth() { return m_deadBandWidthLow; }
+    Result setLowerDeadBandWidth(joystickraw_t value);
+    joystickraw_t getLowerDeadBandWidth() { return m_deadBandWidthLow; }
 
-    Result setCentreDeadBandWIdth(int32_t value);
-    int32_t getCentreDeadBandWidth() { return m_deadBandWidthCentre; }
+    Result setCentreDeadBandWIdth(joystickraw_t value);
+    joystickraw_t getCentreDeadBandWidth() { return m_deadBandWidthCentre; }
 
-    Result setUpperDeadBandWidth(int32_t value);
-    int32_t getUpperDeadBandWidth() { return m_deadBandWidthHigh; }
+    Result setUpperDeadBandWidth(joystickraw_t value);
+    joystickraw_t getUpperDeadBandWidth() { return m_deadBandWidthHigh; }
 
     Result setPolarity(joystickpolaity_t polarity);
     joystickpolaity_t getPolarity() { return m_polarity; }
@@ -56,14 +56,14 @@ class JoystickConfig
     joystickvalue_t m_toRangeHigh;
     joystickvalue_t m_toRangeLow;
 
-    int32_t m_fromRangeHigh;
-    int32_t m_fromRangeLow;
+    joystickraw_t m_fromRangeHigh;
+    joystickraw_t m_fromRangeLow;
 
-    int32_t m_centrePoint;
+    joystickraw_t m_centrePoint;
 
-    int32_t m_deadBandWidthHigh;
-    int32_t m_deadBandWidthCentre;
-    int32_t m_deadBandWidthLow;
+    joystickraw_t m_deadBandWidthHigh;
+    joystickraw_t m_deadBandWidthCentre;
+    joystickraw_t m_deadBandWidthLow;
 
     joystickpolaity_t m_polarity;
 
