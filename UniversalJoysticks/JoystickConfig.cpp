@@ -141,6 +141,12 @@ bool JoystickConfig::withinTolRange(joystickraw_t testValue, joystickraw_t point
 }
 
 
+/**
+ * Sets the lower end of the range of target mapped values for the joystick position.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setToRangeLow(joystickvalue_t value)
 {
   if(value >= getToRangeHigh())
@@ -151,6 +157,12 @@ Result JoystickConfig::setToRangeLow(joystickvalue_t value)
 }
 
 
+/**
+ * Sets the upper end of the range of target mapped values for the joystick position.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setToRangeHigh(joystickvalue_t value)
 {
   if(value <= getToRangeLow())
@@ -161,6 +173,12 @@ Result JoystickConfig::setToRangeHigh(joystickvalue_t value)
 }
 
 
+/**
+ * Sets the lower end of the range of original mapped values for the raw ADC values.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setFromLow(joystickraw_t value)
 {
   if(value >= getFromHigh())
@@ -171,6 +189,12 @@ Result JoystickConfig::setFromLow(joystickraw_t value)
 }
 
 
+/**
+ * Sets the centre point of the range of original mapped values for the raw ADC values.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setFromCentre(joystickraw_t value)
 {
   if(value < getFromLow() || value > getFromHigh())
@@ -181,6 +205,12 @@ Result JoystickConfig::setFromCentre(joystickraw_t value)
 }
 
 
+/**
+ * Sets the upper end of the range of original mapped values for the raw ADC value.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setFromHigh(joystickraw_t value)
 {
   if(value <= getFromLow())
@@ -191,6 +221,12 @@ Result JoystickConfig::setFromHigh(joystickraw_t value)
 }
 
 
+/**
+ * Sets the width of the dead band at the lower end of the raw ADC values range.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setDeadBandLow(joystickraw_t value)
 {
   if(value <= 0)
@@ -201,6 +237,12 @@ Result JoystickConfig::setDeadBandLow(joystickraw_t value)
 }
 
 
+/**
+ * Sets the width of the dead band at the centre point of the raw ADC values range.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setDeadBandCentre(joystickraw_t value)
 {
   if(value <= 0)
@@ -211,6 +253,12 @@ Result JoystickConfig::setDeadBandCentre(joystickraw_t value)
 }
 
 
+/**
+ * Sets the width of the dead band at the upper end of the raw ADC values range.
+ *
+ * @param value Value to set
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setDeadBandHigh(joystickraw_t value)
 {
   if(value <= 0)
@@ -221,6 +269,13 @@ Result JoystickConfig::setDeadBandHigh(joystickraw_t value)
 }
 
 
+/**
+ * Sets the polarity of the joystick.
+ * An easy way to invert the range of output values.
+ *
+ * @param polarity New polarity
+ * @return Always RESULT_OK
+ */
 Result JoystickConfig::setPolarity(joystickpolaity_t polarity)
 {
   m_polarity = polarity;
@@ -228,6 +283,12 @@ Result JoystickConfig::setPolarity(joystickpolaity_t polarity)
 }
 
 
+/**
+ * Sets if this joystick has a centre point.
+ *
+ * @param hasCentrePoint If there is a centre point
+ * @return Always RESULT_OK
+ */
 Result JoystickConfig::setHasCentrePoint(bool hasCentrePoint)
 {
   m_hasCentrePoint = hasCentrePoint;
@@ -235,6 +296,12 @@ Result JoystickConfig::setHasCentrePoint(bool hasCentrePoint)
 }
 
 
+/**
+ * Sets the threshold at which the position is deemed to have changed.
+ *
+ * @param threshold Threshold in mapped to range.
+ * @return If the value was set, otherwise the error in setting the value
+ */
 Result JoystickConfig::setDeltaThreshold(joystickvalue_t threshold)
 {
   if(threshold <= 0)
