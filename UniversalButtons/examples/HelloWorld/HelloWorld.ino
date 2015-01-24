@@ -1,9 +1,8 @@
-/*
+/**
  * Basic example of UniversalButtons usage
  *
- * ArduinoUniversalButtons
+ * ArduinoUniversalInput
  * Dan Nixon, dan-nixon.com
- * 23/06/2014
  */
 
 #include "UniversalInput.h"
@@ -30,10 +29,10 @@ void setup()
   /*
    * Setup some basic buttons using the boards IO
    */
-  buttons.addButton(BUTTON_UP, 4);
-  buttons.addButton(BUTTON_DOWN, 5);
-  buttons.addButton(BUTTON_LEFT, 6);
-  buttons.addButton(BUTTON_RIGHT, 7);
+  buttons.addButton(BUTTON_UP, 3);
+  buttons.addButton(BUTTON_DOWN, 4);
+  buttons.addButton(BUTTON_LEFT, 5);
+  buttons.addButton(BUTTON_RIGHT, 6);
 
   /*
    * Remove a button

@@ -1,11 +1,3 @@
-/*
- * UniversalButtons button input library
- *
- * ArduinoUniversalButtons
- * Dan Nixon, dan-nixon.com
- * 23/06/2014
- */
-
 #ifndef UNIVERSAL_BUTTONS_H
 #define UNIVERSAL_BUTTONS_H
 
@@ -18,11 +10,13 @@
 #define DEFAULT_PULLUP 1
 #define DEFAULT_ACTIVE_LOW 1
 
-
-using namespace UniversalInput;
-
+using UniversalInput::pin_t;
 typedef uint16_t buttonid_t;
 
+
+/**
+ * Represents types of buttons.
+ */
 enum ButtonType
 {
   TYPE_GPIO_BASIC,
@@ -31,6 +25,10 @@ enum ButtonType
   TYPE_CUSTOM_MATRIX
 };
 
+
+/**
+ * Stores a button configuration in the linked list.
+ */
 struct Button
 {
   buttonid_t id;
@@ -50,118 +48,61 @@ struct Button
   Button *next;
 };
 
+
+/**
+ * IO helper class for manaing button and switch input.
+ */
 class UniversalButtons
 {
   public:
     UniversalButtons();
     ~UniversalButtons();
 
-    /*
-     * Updates the states of the buttons and calls callback function when needed
-     */
     void poll();
 
-    /*
-     * Sets the callback function used to handle the state of a button changing
-     * i.e. either a push or release of a button
-     * Callback function takes button ID and new state of button
-     */
-    void setStateChangeCallback(
-        void (* callback)(buttonid_t bid, uint8_t state));
+    void setStateChangeCallback(void (* callback)(buttonid_t bid, uint8_t state));
+    void setStateCycleCallback(void (*callback)(buttonid_t bid, uint32_t timeHeld));
 
-    /*
-     * Sets the callback function used to handle a button being pushed and
-     * released
-     * Callback function takes button ID and length of tiem the button was held
-     * (in milliseconds)
-     */
-    void setStateCycleCallback(void (*callback)(buttonid_t bid,
-          uint32_t timeHeld));
-
-    /*
-     * Getter and setter for the debounce delay
-     */
     uint16_t getDebounceDelay();
     void setDebounceDelay(uint16_t delay);
 
-    /*
-     * Setter for custom IO logic functions
-     * Only effects calls makde to addCustomButton() after it is called
-     */
-    void setCustomIO(uint8_t (* readPin) (pin_t pin),
-        void (* writePin) (pin_t pin, uint8_t state));
+    void setCustomIO(uint8_t (* readPin) (pin_t pin), void (* writePin) (pin_t pin, uint8_t state));
 
-    /*
-     * Sets the default logic configuration for simple buttons
-     */
     void setDefaultButtonConfig(uint8_t pullup, uint8_t activeLow);
 
-    /*
-     * Adds a new basic pull high or pull low button using the board IO
-     */
-    Result addButton(pin_t pin);
-    Result addButton(buttonid_t bid, pin_t pin);
-    Result addButton(buttonid_t bid, pin_t pin,
-        uint8_t pullup, uint8_t activeLow);
+    UniversalInput::Result addButton(pin_t pin);
+    UniversalInput::Result addButton(buttonid_t bid, pin_t pin);
+    UniversalInput::Result addButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow);
+    UniversalInput::Result addButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
+    UniversalInput::Result addCustomButton(buttonid_t bid, pin_t pin);
+    UniversalInput::Result addCustomButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow);
+    UniversalInput::Result addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
 
-    /*
-     * Adds a new matrix button using the board IO
-     */
-    Result addButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
+    UniversalInput::Result removeButton(buttonid_t bid);
 
-    /*
-     * Adds a new basic button using a custom IO function defined with
-     * setCustomIO()
-     */
-    Result addCustomButton(buttonid_t bid, pin_t pin);
-    Result addCustomButton(buttonid_t bid, pin_t pin,
-        uint8_t pullup, uint8_t activeLow);
-
-    /*
-     * Adds a new matrix button using a custom IO function defined with
-     * setCustomIO()
-     */
-    Result addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
-
-    /*
-     * Removes a button
-     */
-    Result removeButton(buttonid_t bid);
-
-    /*
-     * Gets the last known state of a given button
-     */
     int8_t getButtonState(buttonid_t bid);
-
-    /*
-     * Gets the amount of time (in milliseconds) the button has been in it's
-     * current state
-     */
     uint32_t getTimeSinceLastChange(buttonid_t bid);
 
-    /*
-     * Gets the number of buttons currently configured
-     */
     uint16_t buttonCount();
 
   private:
     uint8_t readButtonState(Button *button);
-    void buttonListAppend(Button *button);
+    UniversalInput::Result buttonListAppend(Button *button);
 
-    uint16_t _buttonCount;
+    void (* m_stateChangeCallback)(buttonid_t bid, uint8_t state);
+    void (* m_stateCycleCallback)(buttonid_t bid, uint32_t timeHeld);
 
-    void (* _stateChangeCallback)(buttonid_t bid, uint8_t state);
-    void (* _stateCycleCallback)(buttonid_t bid, uint32_t timeHeld);
+    uint8_t (* m_readPinFunct)(pin_t pin);
+    void (* m_writePinFunct)(pin_t pin, uint8_t state);
 
-    uint8_t (* _readPinFunct)(pin_t pin);
-    void (* _writePinFunct)(pin_t pin, uint8_t state);
+    uint8_t m_defaultActiveLow;
+    uint8_t m_defaultPullup;
 
-    uint8_t _defaultActiveLow;
-    uint8_t _defaultPullup;
+    uint16_t m_debounceDelay;
 
-    uint16_t _debounceDelay;
+    uint16_t m_buttonCount;
+    Button *m_buttonList;
 
-    Button *_buttonList;
 };
 
 #endif
