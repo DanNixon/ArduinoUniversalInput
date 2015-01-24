@@ -1,3 +1,6 @@
+#ifndef ARDUINO_UNIVERSAL_JOYSTICKS_CONFIG_H
+#define ARDUINO_UNIVERSAL_JOYSTICKS_CONFIG_H
+
 #include <inttypes.h>
 #include <UniversalInput.h>
 
@@ -90,3 +93,5 @@ class JoystickConfig
     joystickvalue_t m_deltaThreshold;
 
 };
+
+#endif
