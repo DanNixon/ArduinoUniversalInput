@@ -134,8 +134,20 @@ Result UniversalButtons::buttonListAppend(Button *button)
 
     while(ptr->next)
     {
+      if(ptr->id == button->id)
+        return RESULT_DEVICE_ALREADY_EXISTS;
+
+      if(ptr->rowPin == button->rowPin && ptr->columnPin == button->columnPin)
+        return RESULT_IO_PIN_ALREADY_IN_USE;
+
       ptr = ptr->next;
     }
+
+    if(ptr->id == button->id)
+      return RESULT_DEVICE_ALREADY_EXISTS;
+
+    if(ptr->rowPin == button->rowPin && ptr->columnPin == button->columnPin)
+      return RESULT_IO_PIN_ALREADY_IN_USE;
 
     ptr->next = button;
   }
@@ -351,6 +363,7 @@ Result UniversalButtons::removeButton(buttonid_t bid)
         }
 
         delete current;
+        m_buttonCount--;
 
         return RESULT_OK;
       }
