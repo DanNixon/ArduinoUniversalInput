@@ -159,7 +159,7 @@ Result UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConf
   if(config != NULL)
     newJoystick->config = config;
   else
-    newJoystick->config = new JoystickConfig();
+    newJoystick->config = new JoystickConfig(*m_defaultConfig);
 
   joystickListAppend(newJoystick);
 
@@ -203,7 +203,7 @@ Result UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, Joysti
   if(config != NULL)
     newJoystick->config = config;
   else
-    newJoystick->config = new JoystickConfig();
+    newJoystick->config = new JoystickConfig(*m_defaultConfig);
 
   joystickListAppend(newJoystick);
 
