@@ -1,5 +1,6 @@
 #include <UniversalInput.h>
 #include <UniversalJoysticks.h>
+#include <JoystickCalibrationHelper.h>
 
 UniversalJoysticks joysticks;
 
@@ -10,11 +11,28 @@ void setup()
   // Set the callback
   joysticks.setValueChangeCallback(&joystickChanged);
 
-  // Add some joysticks, with custom configurations
-  joysticks.addJoystick(0, new JoystickConfig(-100, 100, 395, 523, 649, 3, 3, 3, POLARITY_POSITIVE, true, 5));
-  joysticks.addJoystick(1, new JoystickConfig(   0, 100, 382, 382, 647, 0, 3, 3, POLARITY_POSITIVE, false, 5));
-  joysticks.addJoystick(2, new JoystickConfig(-100, 100, 382, 522, 649, 3, 3, 3, POLARITY_NEGATIVE, true, 5));
-  joysticks.addJoystick(3, new JoystickConfig(-100, 100, 385, 513, 640, 3, 3, 3, POLARITY_NEGATIVE, true, 5));
+  // Add a joystick
+  joysticks.addJoystick(0);
+  
+  // Set up the configuration helper
+  JoystickCalibrationHelper configHelper(joysticks.getConfig(0), 0);
+  configHelper.setNumSamples(1000);
+  configHelper.setDelayTime(10);
+  
+  Serial.print("Calibrate lower...");
+  delay(1000);
+  Serial.println("start.");
+  configHelper.sample(JoystickCalibrationHelper::MEASUREMENT_LOW);
+  
+  Serial.print("Calibrate centre...");
+  delay(1000);
+  Serial.println("start.");
+  configHelper.sample(JoystickCalibrationHelper::MEASUREMENT_CENTRE);
+  
+  Serial.print("Calibrate upper...");
+  delay(1000);
+  Serial.println("start.");
+  configHelper.sample(JoystickCalibrationHelper::MEASUREMENT_HIGH);
 }
 
 void loop()
