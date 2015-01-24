@@ -12,6 +12,9 @@
 using UniversalInput::pin_t;
 
 
+/**
+ * Holds data about a joystick in the linked list.
+ */
 struct Joystick
 {
   joystickid_t id;
@@ -23,6 +26,9 @@ struct Joystick
 };
 
 
+/**
+ * IO helper class to manage joystick/potentiometer input.
+ */
 class UniversalJoysticks
 {
   public:

@@ -7,9 +7,44 @@
 #######################################
 
 UniversalJoysticks	KEYWORD1
+JoystickConfig	KEYWORD1
 
 #######################################
 # Functions (KEYWORD2)
 #######################################
 
 poll	KEYWORD2
+setValueChangeCallback	KEYWORD2
+getDefaultConfig	KEYWORD2
+setDefaultConfig	KEYWORD2
+getConfig	KEYWORD2
+setCustomIO	KEYWORD2
+addJoystick	KEYWORD2
+addCustomJoystick	KEYWORD2
+removeJoystick	KEYWORD2
+getJoystickValue	KEYWORD2
+joystickCount	KEYWORD2
+
+convertRaw	KEYWORD2
+setToRangeLow	KEYWORD2
+getToRangeLow	KEYWORD2
+setToRangeHigh	KEYWORD2
+getToRangeHigh	KEYWORD2
+setFromLow	KEYWORD2
+getFromLow	KEYWORD2
+setFromCentre	KEYWORD2
+getFromCentre	KEYWORD2
+setFromHigh	KEYWORD2
+getFromHigh	KEYWORD2
+setDeadBandLow	KEYWORD2
+getDeadBandLow	KEYWORD2
+setDeadBandCentre	KEYWORD2
+getDeadBandCentre	KEYWORD2
+setDeadBandHigh	KEYWORD2
+getDeadBandHigh	KEYWORD2
+setPolarity	KEYWORD2
+getPolarity	KEYWORD2
+setHasCentrePoint	KEYWORD2
+getHasCentrePoint	KEYWORD2
+setDeltaThreshold	KEYWORD2
+getDeltaThreshold	KEYWORD2

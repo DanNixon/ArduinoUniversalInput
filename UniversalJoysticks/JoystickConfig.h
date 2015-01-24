@@ -7,6 +7,12 @@
 using UniversalInput::Result;
 
 
+/**
+ * Used to define the polarity of a joystick.
+ *
+ * When POLARITY_NEGATIVE is set the high and low values
+ * of the mapped to range will be swapped.
+ */
 enum joystickpolaity_t
 {
   POLARITY_POSITIVE,
@@ -14,6 +20,10 @@ enum joystickpolaity_t
 };
 
 
+/**
+ * Holds configuration data for a joystick and does
+ * conversion from raw ADC value to joystick position.
+ */
 class JoystickConfig
 {
   public:

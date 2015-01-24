@@ -1,13 +1,20 @@
 #include "UniversalJoysticks.h"
 
 
-using namespace UniversalInput;
-
-
+/**
+ * Function to cast the result of an analogRead to the required
+ * joystickraw_t integer type.
+ *
+ * @param pin ADC pin to measure
+ * @return ADC value
+ */
 joystickraw_t joystickAnalogRead(pin_t pin)
 {
   return (joystickraw_t) analogRead(pin);
 }
+
+
+using namespace UniversalInput;
 
 
 UniversalJoysticks::UniversalJoysticks() :
@@ -25,6 +32,9 @@ UniversalJoysticks::~UniversalJoysticks()
 }
 
 
+/**
+ * Checks all configured joysticks for changes in position.
+ */
 void UniversalJoysticks::poll()
 {
   Joystick *joystick = m_joystickList;
@@ -49,17 +59,33 @@ void UniversalJoysticks::poll()
 }
 
 
+/**
+ * Sets the callback for when a value is changed.
+ *
+ * @param callback Pointer to the function to call
+ */
 void UniversalJoysticks::setValueChangeCallback(void (* callback)(joystickid_t jid, joystickvalue_t value, joystickvalue_t delta))
 {
   m_valueChangeCallback = callback;
 }
 
 
+/**
+ * Returns the default joystick configuration.
+ *
+ * @return Default configuration
+ */
 JoystickConfig *UniversalJoysticks::getDefaultConfig()
 {
   return m_defaultConfig;
 }
 
+
+/**
+ * Sets the default configuration for new joysticks.
+ *
+ * @param config Pointer to configuration
+ */
 void UniversalJoysticks::setDefaultConfig(JoystickConfig *config)
 {
   delete m_defaultConfig;
@@ -67,6 +93,12 @@ void UniversalJoysticks::setDefaultConfig(JoystickConfig *config)
 }
 
 
+/**
+ * Gets the configuration for a given joystick by ID.
+ *
+ * @param jid Joystick ID
+ * @return Joystick configuration
+ */
 JoystickConfig *UniversalJoysticks::getConfig(joystickid_t jid)
 {
   Joystick *joystick = m_joystickList;
@@ -83,18 +115,38 @@ JoystickConfig *UniversalJoysticks::getConfig(joystickid_t jid)
 }
 
 
+/**
+ * Sets the ADC read function for joysticks added using custom IO.
+ *
+ * @param readADC Pointer to ADC read function
+ */
 void UniversalJoysticks::setCustomIO(joystickraw_t (* readADC)(pin_t pin))
 {
   m_readADC = readADC;
 }
 
 
+/**
+ * Adds a new joystick using the pin number as the ID.
+ *
+ * @param pin ADC pin
+ * @param config Optional joystick configuration
+ * @return Result of addition
+ */
 Result UniversalJoysticks::addJoystick(pin_t pin, JoystickConfig *config)
 {
   return addJoystick(pin, pin, config);
 }
 
 
+/**
+ * Adds a new joystick on a given on board ADC pin.
+ *
+ * @param jid New joystick ID
+ * @param pin ADC pin
+ * @param config Optional joystick configuration
+ * @return Result of addition
+ */
 Result UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
 {
   Joystick *newJoystick = new Joystick;
@@ -115,12 +167,27 @@ Result UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConf
 }
 
 
+/**
+ * Adds a new joystick using custom IO and using the pin number as the ID.
+ *
+ * @param pin ADC pin
+ * @param config Optional joystick configuration
+ * @return Result of addition
+ */
 Result UniversalJoysticks::addCustomJoystick(pin_t pin, JoystickConfig *config)
 {
   return addCustomJoystick(pin, pin, config);
 }
 
 
+/**
+ * Adds a joystick using custom IO.
+ *
+ * @param jid ID of new joystick
+ * @param pin ADC pin
+ * @param config Optional joystick configuration
+ * @return Result of addition
+ */
 Result UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
 {
   if(!m_readADC)
@@ -144,6 +211,12 @@ Result UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, Joysti
 }
 
 
+/**
+ * Removes a joystick given its ID.
+ *
+ * @param jid Jostick ID
+ * @return Result of deletion
+ */
 Result UniversalJoysticks::removeJoystick(joystickid_t jid)
 {
   if(m_joystickCount == 0)
@@ -192,6 +265,12 @@ Result UniversalJoysticks::removeJoystick(joystickid_t jid)
 }
 
 
+/**
+ * Gets the last recorded value for a joystick.
+ *
+ * @param jid ID of Joystick
+ * @return Last recorded value
+ */
 joystickvalue_t UniversalJoysticks::getJoystickValue(joystickid_t jid)
 {
   Joystick *joystick = m_joystickList;
@@ -208,12 +287,22 @@ joystickvalue_t UniversalJoysticks::getJoystickValue(joystickid_t jid)
 }
 
 
+/**
+ * Gets the number of joysticks added.
+ *
+ * @return Joystick count
+ */
 uint16_t UniversalJoysticks::joystickCount()
 {
   return m_joystickCount;
 }
 
 
+/**
+ * Adds a new joystick to the linked list.
+ *
+ * @param joystick Joystick to append
+ */
 void UniversalJoysticks::joystickListAppend(Joystick *joystick)
 {
   if(!m_joystickList)
