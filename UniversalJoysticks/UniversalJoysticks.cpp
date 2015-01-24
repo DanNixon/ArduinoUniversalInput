@@ -306,6 +306,7 @@ Result UniversalJoysticks::joystickListAppend(Joystick *joystick)
   if(!m_joystickList)
   {
     m_joystickList = joystick;
+    m_joystickCount++;
     return RESULT_OK;
   }
   else
