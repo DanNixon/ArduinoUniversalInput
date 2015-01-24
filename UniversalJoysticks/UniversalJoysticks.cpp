@@ -161,9 +161,7 @@ Result UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConf
   else
     newJoystick->config = new JoystickConfig(*m_defaultConfig);
 
-  joystickListAppend(newJoystick);
-
-  return RESULT_OK;
+  return joystickListAppend(newJoystick);
 }
 
 
@@ -205,9 +203,7 @@ Result UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, Joysti
   else
     newJoystick->config = new JoystickConfig(*m_defaultConfig);
 
-  joystickListAppend(newJoystick);
-
-  return RESULT_OK;
+  return joystickListAppend(newJoystick);
 }
 
 
@@ -300,14 +296,17 @@ uint16_t UniversalJoysticks::joystickCount()
 
 /**
  * Adds a new joystick to the linked list.
+ * Performs checking for duplicate IDs and ADC pins already in use.
  *
  * @param joystick Joystick to append
+ * @return Result of addition
  */
-void UniversalJoysticks::joystickListAppend(Joystick *joystick)
+Result UniversalJoysticks::joystickListAppend(Joystick *joystick)
 {
   if(!m_joystickList)
   {
     m_joystickList = joystick;
+    return RESULT_OK;
   }
   else
   {
@@ -315,11 +314,24 @@ void UniversalJoysticks::joystickListAppend(Joystick *joystick)
 
     while(ptr->next)
     {
+      if(ptr->id == joystick->id)
+        return RESULT_DEVICE_ALREADY_EXISTS;
+
+      if(ptr->adcPin == joystick->adcPin)
+        return RESULT_IO_PIN_ALREADY_IN_USE;
+
       ptr = ptr->next;
     }
+
+    if(ptr->id == joystick->id)
+      return RESULT_DEVICE_ALREADY_EXISTS;
+
+    if(ptr->adcPin == joystick->adcPin)
+      return RESULT_IO_PIN_ALREADY_IN_USE;
 
     ptr->next = joystick;
   }
 
   m_joystickCount++;
+  return RESULT_OK;
 }
