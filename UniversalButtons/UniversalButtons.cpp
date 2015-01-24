@@ -320,7 +320,7 @@ Result UniversalButtons::removeButton(buttonid_t bid)
 {
   if(m_buttonCount == 0)
   {
-    return RESULT_NO_SUCH_BUTTON;
+    return RESULT_NO_SUCH_DEVICE;
   }
   if(m_buttonCount == 1)
   {
@@ -360,7 +360,7 @@ Result UniversalButtons::removeButton(buttonid_t bid)
     }
   }
 
-  return RESULT_NO_SUCH_BUTTON;
+  return RESULT_NO_SUCH_DEVICE;
 }
 
 
