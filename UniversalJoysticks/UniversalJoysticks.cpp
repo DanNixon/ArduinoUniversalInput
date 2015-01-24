@@ -248,6 +248,7 @@ Result UniversalJoysticks::removeJoystick(joystickid_t jid)
         }
 
         delete current;
+        m_joystickCount--;
 
         return RESULT_OK;
       }

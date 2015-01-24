@@ -22,6 +22,8 @@ void setup()
   test_assert(buttons.buttonCount(), 2, "Test button count");
   test_assert(buttons.removeButton(0), RESULT_OK, "Removing button");
   test_assert(buttons.buttonCount(), 1, "Test button count");
+  test_assert(buttons.removeButton(5), RESULT_NO_SUCH_DEVICE, "Removing button that does not exist");
+  test_assert(buttons.buttonCount(), 1, "Test button count");
   test_assert(buttons.removeButton(1), RESULT_OK, "Removing button");
   test_assert(buttons.buttonCount(), 0, "Test button count");
 }
