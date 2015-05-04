@@ -17,7 +17,7 @@ typedef uint16_t buttonid_t;
 /**
  * Represents types of buttons.
  */
-enum ButtonType
+enum buttontype_t
 {
   TYPE_GPIO_BASIC,
   TYPE_GPIO_MATRIX,
@@ -32,7 +32,7 @@ enum ButtonType
 struct Button
 {
   buttonid_t id;
-  ButtonType type;
+  buttontype_t type;
 
   pin_t rowPin;
   pin_t columnPin;
