@@ -149,7 +149,7 @@ result_t UniversalJoysticks::addJoystick(pin_t pin, JoystickConfig *config)
  */
 result_t UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
 {
-  joystick_t *newJoystick = new Joystick;
+  joystick_t *newJoystick = new joystick_t;
   newJoystick->id = jid;
   newJoystick->adcPin = pin;
   newJoystick->adcRead = &joystickAnalogRead;
@@ -191,7 +191,7 @@ result_t UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, Joys
   if(!m_readADC)
     return RESULT_NO_CUSTOM_IO;
 
-  joystick_t *newJoystick = new Joystick;
+  joystick_t *newJoystick = new joystick_t;
   newJoystick->id = jid;
   newJoystick->adcPin = pin;
   newJoystick->adcRead = m_readADC;
@@ -302,7 +302,7 @@ uint16_t UniversalJoysticks::joystickCount()
  * @param joystick Joystick to append
  * @return Result of addition
  */
-result_t UniversalJoysticks::joystickListAppend(Joystick *joystick)
+result_t UniversalJoysticks::joystickListAppend(joystick_t *joystick)
 {
   if(!m_joystickList)
   {

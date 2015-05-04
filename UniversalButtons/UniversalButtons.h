@@ -86,8 +86,8 @@ class UniversalButtons
     uint16_t buttonCount();
 
   private:
-    uint8_t readButtonState(Button *button);
-    UniversalInput::result_t buttonListAppend(Button *button);
+    uint8_t readButtonState(button_t *button);
+    UniversalInput::result_t buttonListAppend(button_t *button);
 
     void (* m_stateChangeCallback)(buttonid_t bid, uint8_t state);
     void (* m_stateCycleCallback)(buttonid_t bid, uint32_t timeHeld);

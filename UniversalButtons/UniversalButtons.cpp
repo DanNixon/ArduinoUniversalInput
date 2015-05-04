@@ -31,7 +31,7 @@ UniversalButtons::~UniversalButtons()
  * @param button Button configuration
  * @return STate of button
  */
-uint8_t UniversalButtons::readButtonState(Button *button)
+uint8_t UniversalButtons::readButtonState(button_t *button)
 {
   uint8_t state;
 
@@ -120,7 +120,7 @@ void UniversalButtons::setStateCycleCallback(void (* callback)(buttonid_t bid, u
  * @param button Button to add
  * @return Result of addition
  */
-result_t UniversalButtons::buttonListAppend(Button *button)
+result_t UniversalButtons::buttonListAppend(button_t *button)
 {
   if(!m_buttonList)
   {
@@ -169,7 +169,7 @@ result_t UniversalButtons::buttonListAppend(Button *button)
 result_t UniversalButtons::addButton(buttonid_t bid, pin_t pin,
     uint8_t pullup, uint8_t activeLow)
 {
-  button_t *newButton = new Button;
+  button_t *newButton = new button_t;
   newButton->type = TYPE_GPIO_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
@@ -229,7 +229,7 @@ result_t UniversalButtons::addButton(pin_t pin)
  */
 result_t UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
 {
-  button_t *newButton = new Button;
+  button_t *newButton = new button_t;
   newButton->type = TYPE_GPIO_MATRIX;
   newButton->id = bid;
   newButton->rowPin = rowPin;
@@ -264,7 +264,7 @@ result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
   if(!(m_readPinFunct && m_writePinFunct))
     return RESULT_NO_CUSTOM_IO;
 
-  button_t *newButton = new Button;
+  button_t *newButton = new button_t;
   newButton->type = TYPE_CUSTOM_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
@@ -309,7 +309,7 @@ result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t c
   if(!( m_readPinFunct && m_writePinFunct))
     return RESULT_NO_CUSTOM_IO;
 
-  button_t *newButton = new Button;
+  button_t *newButton = new button_t;
   newButton->type = TYPE_CUSTOM_MATRIX;
   newButton->id = bid;
   newButton->rowPin = rowPin;

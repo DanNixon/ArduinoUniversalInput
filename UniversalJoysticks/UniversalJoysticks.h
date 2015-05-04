@@ -59,7 +59,7 @@ class UniversalJoysticks
     uint16_t joystickCount();
 
   private:
-    UniversalInput::result_t joystickListAppend(Joystick *joystick);
+    UniversalInput::result_t joystickListAppend(joystick_t *joystick);
 
     JoystickConfig *m_defaultConfig;
 
