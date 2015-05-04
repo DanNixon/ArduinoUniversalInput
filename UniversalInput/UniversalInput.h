@@ -19,6 +19,12 @@ namespace UniversalInput
     RESULT_IO_PIN_ALREADY_IN_USE
   };
 
+  enum inputtype_t
+  {
+    UNIVERSAL_BUTTON,
+    UNIVERSAL_JOYSTICK
+  };
+
 };
 
 #endif
