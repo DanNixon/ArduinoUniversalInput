@@ -62,7 +62,7 @@ uint8_t UniversalButtons::readButtonState(Button *button)
 void UniversalButtons::poll()
 {
   uint8_t buttonState;
-  Button *button = m_buttonList;
+  button_t *button = m_buttonList;
 
   while(button)
   {
@@ -130,7 +130,7 @@ result_t UniversalButtons::buttonListAppend(Button *button)
   }
   else
   {
-    Button *ptr = m_buttonList;
+    button_t *ptr = m_buttonList;
 
     while(ptr->next)
     {
@@ -169,7 +169,7 @@ result_t UniversalButtons::buttonListAppend(Button *button)
 result_t UniversalButtons::addButton(buttonid_t bid, pin_t pin,
     uint8_t pullup, uint8_t activeLow)
 {
-  Button *newButton = new Button;
+  button_t *newButton = new Button;
   newButton->type = TYPE_GPIO_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
@@ -229,7 +229,7 @@ result_t UniversalButtons::addButton(pin_t pin)
  */
 result_t UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
 {
-  Button *newButton = new Button;
+  button_t *newButton = new Button;
   newButton->type = TYPE_GPIO_MATRIX;
   newButton->id = bid;
   newButton->rowPin = rowPin;
@@ -264,7 +264,7 @@ result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
   if(!(m_readPinFunct && m_writePinFunct))
     return RESULT_NO_CUSTOM_IO;
 
-  Button *newButton = new Button;
+  button_t *newButton = new Button;
   newButton->type = TYPE_CUSTOM_BASIC;
   newButton->id = bid;
   newButton->rowPin = pin;
@@ -309,7 +309,7 @@ result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t c
   if(!( m_readPinFunct && m_writePinFunct))
     return RESULT_NO_CUSTOM_IO;
 
-  Button *newButton = new Button;
+  button_t *newButton = new Button;
   newButton->type = TYPE_CUSTOM_MATRIX;
   newButton->id = bid;
   newButton->rowPin = rowPin;
@@ -346,8 +346,8 @@ result_t UniversalButtons::removeButton(buttonid_t bid)
   }
   else
   {
-    Button *prev = NULL;
-    Button *current = m_buttonList;
+    button_t *prev = NULL;
+    button_t *current = m_buttonList;
 
     while(current)
     {
@@ -407,7 +407,7 @@ void UniversalButtons::setDebounceDelay(uint16_t delay)
  */
 int8_t UniversalButtons::getButtonState(buttonid_t bid)
 {
-  Button *button = m_buttonList;
+  button_t *button = m_buttonList;
 
   while(button)
   {
@@ -430,7 +430,7 @@ int8_t UniversalButtons::getButtonState(buttonid_t bid)
  */
 uint32_t UniversalButtons::getTimeSinceLastChange(buttonid_t bid)
 {
-  Button *button = m_buttonList;
+  button_t *button = m_buttonList;
 
   while(button)
   {

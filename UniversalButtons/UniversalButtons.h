@@ -29,7 +29,7 @@ enum buttontype_t
 /**
  * Stores a button configuration in the linked list.
  */
-struct Button
+struct button_t
 {
   buttonid_t id;
   buttontype_t type;
@@ -45,7 +45,7 @@ struct Button
   uint8_t lastState;
   uint32_t lastEdgeTime;
 
-  Button *next;
+  button_t *next;
 };
 
 
@@ -101,7 +101,7 @@ class UniversalButtons
     uint16_t m_debounceDelay;
 
     uint16_t m_buttonCount;
-    Button *m_buttonList;
+    button_t *m_buttonList;
 
 };
 
