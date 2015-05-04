@@ -42,7 +42,7 @@ void setup()
   buttons.setStateChangeCallback(&button_handler);
 
   Serial.print("Button struct size: ");
-  Serial.println(sizeof(Button));
+  Serial.println(sizeof(button_t));
 
   Serial.print("UniversalButtons class size: ");
   Serial.println(sizeof(UniversalButtons));
