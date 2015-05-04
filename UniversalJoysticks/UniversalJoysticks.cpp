@@ -37,7 +37,7 @@ UniversalJoysticks::~UniversalJoysticks()
  */
 void UniversalJoysticks::poll()
 {
-  Joystick *joystick = m_joystickList;
+  joystick_t *joystick = m_joystickList;
 
   while(joystick)
   {
@@ -101,7 +101,7 @@ void UniversalJoysticks::setDefaultConfig(JoystickConfig *config)
  */
 JoystickConfig *UniversalJoysticks::getConfig(joystickid_t jid)
 {
-  Joystick *joystick = m_joystickList;
+  joystick_t *joystick = m_joystickList;
 
   while(joystick)
   {
@@ -149,7 +149,7 @@ result_t UniversalJoysticks::addJoystick(pin_t pin, JoystickConfig *config)
  */
 result_t UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
 {
-  Joystick *newJoystick = new Joystick;
+  joystick_t *newJoystick = new Joystick;
   newJoystick->id = jid;
   newJoystick->adcPin = pin;
   newJoystick->adcRead = &joystickAnalogRead;
@@ -191,7 +191,7 @@ result_t UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, Joys
   if(!m_readADC)
     return RESULT_NO_CUSTOM_IO;
 
-  Joystick *newJoystick = new Joystick;
+  joystick_t *newJoystick = new Joystick;
   newJoystick->id = jid;
   newJoystick->adcPin = pin;
   newJoystick->adcRead = m_readADC;
@@ -231,8 +231,8 @@ result_t UniversalJoysticks::removeJoystick(joystickid_t jid)
   }
   else
   {
-    Joystick *prev = NULL;
-    Joystick *current = m_joystickList;
+    joystick_t *prev = NULL;
+    joystick_t *current = m_joystickList;
 
     while(current)
     {
@@ -270,7 +270,7 @@ result_t UniversalJoysticks::removeJoystick(joystickid_t jid)
  */
 joystickvalue_t UniversalJoysticks::getJoystickValue(joystickid_t jid)
 {
-  Joystick *joystick = m_joystickList;
+  joystick_t *joystick = m_joystickList;
 
   while(joystick)
   {
@@ -312,7 +312,7 @@ result_t UniversalJoysticks::joystickListAppend(Joystick *joystick)
   }
   else
   {
-    Joystick *ptr = m_joystickList;
+    joystick_t *ptr = m_joystickList;
 
     while(ptr->next)
     {

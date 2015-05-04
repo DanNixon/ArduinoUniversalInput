@@ -15,14 +15,14 @@ using UniversalInput::pin_t;
 /**
  * Holds data about a joystick in the linked list.
  */
-struct Joystick
+struct joystick_t
 {
   joystickid_t id;
   JoystickConfig *config;
   pin_t adcPin;
   joystickvalue_t (* adcRead) (pin_t pin);
   joystickvalue_t lastValue;
-  Joystick *next;
+  joystick_t *next;
 };
 
 
@@ -67,7 +67,7 @@ class UniversalJoysticks
     void (* m_valueChangeCallback)(joystickid_t jid, joystickvalue_t value, joystickvalue_t delta);
 
     uint16_t m_joystickCount;
-    Joystick *m_joystickList;
+    joystick_t *m_joystickList;
 
 };
 

@@ -16,7 +16,7 @@ class JoystickCalibrationHelper
     /**
      * Represents types of measurments that can be taken.
      */
-    enum MeasurementType
+    enum measurementtype_t
     {
       MEASUREMENT_LOW,
       MEASUREMENT_CENTRE,
@@ -26,7 +26,7 @@ class JoystickCalibrationHelper
     void setNumSamples(uint32_t numSamples);
     void setDelayTime(uint16_t delayTime);
 
-    void sample(MeasurementType type, uint32_t numSamples = 0, uint16_t delayTime = 0);
+    void sample(measurementtype_t type, uint32_t numSamples = 0, uint16_t delayTime = 0);
 
   private:
     // The config to update

@@ -41,7 +41,7 @@ void JoystickCalibrationHelper::setDelayTime(uint16_t delayTime)
  * @param numSamples Number of samples
  * @param delayTime Time delay between samples in milliseconds
  */
-void JoystickCalibrationHelper::sample(MeasurementType type, uint32_t numSamples, uint16_t delayTime)
+void JoystickCalibrationHelper::sample(measurementtype_t type, uint32_t numSamples, uint16_t delayTime)
 {
   if(numSamples == 0)
     numSamples = m_numSamples;
