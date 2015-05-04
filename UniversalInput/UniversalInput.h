@@ -8,7 +8,7 @@ namespace UniversalInput
 {
   typedef uint8_t pin_t;
 
-  enum Result
+  enum result_t
   {
     RESULT_OK,
     RESULT_DEVICE_ALREADY_EXISTS,

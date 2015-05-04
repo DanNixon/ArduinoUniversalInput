@@ -144,7 +144,7 @@ bool JoystickConfig::withinTolRange(joystickraw_t testValue, joystickraw_t point
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setToRangeLow(joystickvalue_t value)
+result_t JoystickConfig::setToRangeLow(joystickvalue_t value)
 {
   if(value >= getToRangeHigh())
     return RESULT_OUT_OF_RANGE;
@@ -160,7 +160,7 @@ Result JoystickConfig::setToRangeLow(joystickvalue_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setToRangeHigh(joystickvalue_t value)
+result_t JoystickConfig::setToRangeHigh(joystickvalue_t value)
 {
   if(value <= getToRangeLow())
     return RESULT_OUT_OF_RANGE;
@@ -176,7 +176,7 @@ Result JoystickConfig::setToRangeHigh(joystickvalue_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setFromLow(joystickraw_t value)
+result_t JoystickConfig::setFromLow(joystickraw_t value)
 {
   if(value >= getFromHigh())
     return RESULT_OUT_OF_RANGE;
@@ -192,7 +192,7 @@ Result JoystickConfig::setFromLow(joystickraw_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setFromCentre(joystickraw_t value)
+result_t JoystickConfig::setFromCentre(joystickraw_t value)
 {
   if(value < getFromLow() || value > getFromHigh())
     return RESULT_OUT_OF_RANGE;
@@ -208,7 +208,7 @@ Result JoystickConfig::setFromCentre(joystickraw_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setFromHigh(joystickraw_t value)
+result_t JoystickConfig::setFromHigh(joystickraw_t value)
 {
   if(value <= getFromLow())
     return RESULT_OUT_OF_RANGE;
@@ -224,7 +224,7 @@ Result JoystickConfig::setFromHigh(joystickraw_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setDeadBandLow(joystickraw_t value)
+result_t JoystickConfig::setDeadBandLow(joystickraw_t value)
 {
   if(value <= 0)
     return RESULT_OUT_OF_RANGE;
@@ -240,7 +240,7 @@ Result JoystickConfig::setDeadBandLow(joystickraw_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setDeadBandCentre(joystickraw_t value)
+result_t JoystickConfig::setDeadBandCentre(joystickraw_t value)
 {
   if(value <= 0)
     return RESULT_OUT_OF_RANGE;
@@ -256,7 +256,7 @@ Result JoystickConfig::setDeadBandCentre(joystickraw_t value)
  * @param value Value to set
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setDeadBandHigh(joystickraw_t value)
+result_t JoystickConfig::setDeadBandHigh(joystickraw_t value)
 {
   if(value <= 0)
     return RESULT_OUT_OF_RANGE;
@@ -273,7 +273,7 @@ Result JoystickConfig::setDeadBandHigh(joystickraw_t value)
  * @param polarity New polarity
  * @return Always RESULT_OK
  */
-Result JoystickConfig::setPolarity(joystickpolaity_t polarity)
+result_t JoystickConfig::setPolarity(joystickpolaity_t polarity)
 {
   m_polarity = polarity;
   return RESULT_OK;
@@ -286,7 +286,7 @@ Result JoystickConfig::setPolarity(joystickpolaity_t polarity)
  * @param hasCentrePoint If there is a centre point
  * @return Always RESULT_OK
  */
-Result JoystickConfig::setHasCentrePoint(bool hasCentrePoint)
+result_t JoystickConfig::setHasCentrePoint(bool hasCentrePoint)
 {
   m_hasCentrePoint = hasCentrePoint;
   return RESULT_OK;
@@ -299,7 +299,7 @@ Result JoystickConfig::setHasCentrePoint(bool hasCentrePoint)
  * @param threshold Threshold in mapped to range.
  * @return If the value was set, otherwise the error in setting the value
  */
-Result JoystickConfig::setDeltaThreshold(joystickvalue_t threshold)
+result_t JoystickConfig::setDeltaThreshold(joystickvalue_t threshold)
 {
   if(threshold <= 0)
     return RESULT_OUT_OF_RANGE;

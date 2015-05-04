@@ -7,7 +7,7 @@
 #include "JoystickTypes.h"
 
 
-using UniversalInput::Result;
+using UniversalInput::result_t;
 
 
 /**
@@ -41,37 +41,37 @@ class JoystickConfig
     joystickvalue_t convertRaw(joystickraw_t value);
     bool withinTolRange(joystickraw_t testValue, joystickraw_t pointValue, joystickraw_t tolerance);
 
-    Result setToRangeLow(joystickvalue_t value);
+    result_t setToRangeLow(joystickvalue_t value);
     joystickvalue_t getToRangeLow() { return m_toRangeLow; }
 
-    Result setToRangeHigh(joystickvalue_t value);
+    result_t setToRangeHigh(joystickvalue_t value);
     joystickvalue_t getToRangeHigh() { return m_toRangeHigh; }
 
-    Result setFromLow(joystickraw_t value);
+    result_t setFromLow(joystickraw_t value);
     joystickraw_t getFromLow() { return m_fromLow; }
 
-    Result setFromCentre(joystickraw_t value);
+    result_t setFromCentre(joystickraw_t value);
     joystickraw_t getFromCentre() { return m_fromCentre; }
 
-    Result setFromHigh(joystickraw_t value);
+    result_t setFromHigh(joystickraw_t value);
     joystickraw_t getFromHigh() { return m_fromHigh; }
 
-    Result setDeadBandLow(joystickraw_t value);
+    result_t setDeadBandLow(joystickraw_t value);
     joystickraw_t getDeadBandLow() { return m_deadBandLow; }
 
-    Result setDeadBandCentre(joystickraw_t value);
+    result_t setDeadBandCentre(joystickraw_t value);
     joystickraw_t getDeadBandCentre() { return m_deadBandCentre; }
 
-    Result setDeadBandHigh(joystickraw_t value);
+    result_t setDeadBandHigh(joystickraw_t value);
     joystickraw_t getDeadBandHigh() { return m_deadBandHigh; }
 
-    Result setPolarity(joystickpolaity_t polarity);
+    result_t setPolarity(joystickpolaity_t polarity);
     joystickpolaity_t getPolarity() { return m_polarity; }
 
-    Result setHasCentrePoint(bool hasCentrePoint);
+    result_t setHasCentrePoint(bool hasCentrePoint);
     bool getHasCentrePoint() { return m_hasCentrePoint; }
 
-    Result setDeltaThreshold(joystickvalue_t threshold);
+    result_t setDeltaThreshold(joystickvalue_t threshold);
     joystickvalue_t getDeltaThreshold() { return m_deltaThreshold; }
 
 

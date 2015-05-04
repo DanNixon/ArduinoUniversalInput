@@ -70,15 +70,15 @@ class UniversalButtons
 
     void setDefaultButtonConfig(uint8_t pullup, uint8_t activeLow);
 
-    UniversalInput::Result addButton(pin_t pin);
-    UniversalInput::Result addButton(buttonid_t bid, pin_t pin);
-    UniversalInput::Result addButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow);
-    UniversalInput::Result addButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
-    UniversalInput::Result addCustomButton(buttonid_t bid, pin_t pin);
-    UniversalInput::Result addCustomButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow);
-    UniversalInput::Result addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
+    UniversalInput::result_t addButton(pin_t pin);
+    UniversalInput::result_t addButton(buttonid_t bid, pin_t pin);
+    UniversalInput::result_t addButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow);
+    UniversalInput::result_t addButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
+    UniversalInput::result_t addCustomButton(buttonid_t bid, pin_t pin);
+    UniversalInput::result_t addCustomButton(buttonid_t bid, pin_t pin, uint8_t pullup, uint8_t activeLow);
+    UniversalInput::result_t addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin);
 
-    UniversalInput::Result removeButton(buttonid_t bid);
+    UniversalInput::result_t removeButton(buttonid_t bid);
 
     int8_t getButtonState(buttonid_t bid);
     uint32_t getTimeSinceLastChange(buttonid_t bid);
@@ -87,7 +87,7 @@ class UniversalButtons
 
   private:
     uint8_t readButtonState(Button *button);
-    UniversalInput::Result buttonListAppend(Button *button);
+    UniversalInput::result_t buttonListAppend(Button *button);
 
     void (* m_stateChangeCallback)(buttonid_t bid, uint8_t state);
     void (* m_stateCycleCallback)(buttonid_t bid, uint32_t timeHeld);

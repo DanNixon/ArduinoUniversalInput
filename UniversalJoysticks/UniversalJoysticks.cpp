@@ -133,7 +133,7 @@ void UniversalJoysticks::setCustomIO(joystickraw_t (* readADC)(pin_t pin))
  * @param config Optional joystick configuration
  * @return Result of addition
  */
-Result UniversalJoysticks::addJoystick(pin_t pin, JoystickConfig *config)
+result_t UniversalJoysticks::addJoystick(pin_t pin, JoystickConfig *config)
 {
   return addJoystick(pin, pin, config);
 }
@@ -147,7 +147,7 @@ Result UniversalJoysticks::addJoystick(pin_t pin, JoystickConfig *config)
  * @param config Optional joystick configuration
  * @return Result of addition
  */
-Result UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
+result_t UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
 {
   Joystick *newJoystick = new Joystick;
   newJoystick->id = jid;
@@ -172,7 +172,7 @@ Result UniversalJoysticks::addJoystick(joystickid_t jid, pin_t pin, JoystickConf
  * @param config Optional joystick configuration
  * @return Result of addition
  */
-Result UniversalJoysticks::addCustomJoystick(pin_t pin, JoystickConfig *config)
+result_t UniversalJoysticks::addCustomJoystick(pin_t pin, JoystickConfig *config)
 {
   return addCustomJoystick(pin, pin, config);
 }
@@ -186,7 +186,7 @@ Result UniversalJoysticks::addCustomJoystick(pin_t pin, JoystickConfig *config)
  * @param config Optional joystick configuration
  * @return Result of addition
  */
-Result UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
+result_t UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config)
 {
   if(!m_readADC)
     return RESULT_NO_CUSTOM_IO;
@@ -213,7 +213,7 @@ Result UniversalJoysticks::addCustomJoystick(joystickid_t jid, pin_t pin, Joysti
  * @param jid Jostick ID
  * @return Result of deletion
  */
-Result UniversalJoysticks::removeJoystick(joystickid_t jid)
+result_t UniversalJoysticks::removeJoystick(joystickid_t jid)
 {
   if(m_joystickCount == 0)
   {
@@ -302,7 +302,7 @@ uint16_t UniversalJoysticks::joystickCount()
  * @param joystick Joystick to append
  * @return Result of addition
  */
-Result UniversalJoysticks::joystickListAppend(Joystick *joystick)
+result_t UniversalJoysticks::joystickListAppend(Joystick *joystick)
 {
   if(!m_joystickList)
   {

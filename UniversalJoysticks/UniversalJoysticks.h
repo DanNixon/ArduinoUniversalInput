@@ -46,20 +46,20 @@ class UniversalJoysticks
 
     void setCustomIO(joystickraw_t (* readADC)(pin_t pin));
 
-    UniversalInput::Result addJoystick(pin_t pin, JoystickConfig *config = NULL);
-    UniversalInput::Result addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config = NULL);
+    UniversalInput::result_t addJoystick(pin_t pin, JoystickConfig *config = NULL);
+    UniversalInput::result_t addJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config = NULL);
 
-    UniversalInput::Result addCustomJoystick(pin_t pin, JoystickConfig *config = NULL);
-    UniversalInput::Result addCustomJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config = NULL);
+    UniversalInput::result_t addCustomJoystick(pin_t pin, JoystickConfig *config = NULL);
+    UniversalInput::result_t addCustomJoystick(joystickid_t jid, pin_t pin, JoystickConfig *config = NULL);
 
-    UniversalInput::Result removeJoystick(joystickid_t jid);
+    UniversalInput::result_t removeJoystick(joystickid_t jid);
 
     joystickvalue_t getJoystickValue(joystickid_t jid);
 
     uint16_t joystickCount();
 
   private:
-    UniversalInput::Result joystickListAppend(Joystick *joystick);
+    UniversalInput::result_t joystickListAppend(Joystick *joystick);
 
     JoystickConfig *m_defaultConfig;
 

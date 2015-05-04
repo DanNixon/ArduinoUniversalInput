@@ -120,7 +120,7 @@ void UniversalButtons::setStateCycleCallback(void (* callback)(buttonid_t bid, u
  * @param button Button to add
  * @return Result of addition
  */
-Result UniversalButtons::buttonListAppend(Button *button)
+result_t UniversalButtons::buttonListAppend(Button *button)
 {
   if(!m_buttonList)
   {
@@ -166,7 +166,7 @@ Result UniversalButtons::buttonListAppend(Button *button)
  * @param activeLow If the button is active low
  * @return Result of addition
  */
-Result UniversalButtons::addButton(buttonid_t bid, pin_t pin,
+result_t UniversalButtons::addButton(buttonid_t bid, pin_t pin,
     uint8_t pullup, uint8_t activeLow)
 {
   Button *newButton = new Button;
@@ -198,7 +198,7 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t pin,
  * @param activeLow If the button is active low
  * @return Result of addition
  */
-Result UniversalButtons::addButton(buttonid_t bid, pin_t pin)
+result_t UniversalButtons::addButton(buttonid_t bid, pin_t pin)
 {
   return addButton(bid, pin, m_defaultPullup, m_defaultActiveLow);
 }
@@ -211,7 +211,7 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t pin)
  * @param pin IO pin
  * @return Result of addition
  */
-Result UniversalButtons::addButton(pin_t pin)
+result_t UniversalButtons::addButton(pin_t pin)
 {
   return addButton(pin, pin, m_defaultPullup, m_defaultActiveLow);
 }
@@ -227,7 +227,7 @@ Result UniversalButtons::addButton(pin_t pin)
  * @param activeLow If the button is active low
  * @return Result of addition
  */
-Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
+result_t UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
 {
   Button *newButton = new Button;
   newButton->type = TYPE_GPIO_MATRIX;
@@ -258,7 +258,7 @@ Result UniversalButtons::addButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
  * @param activeLow If the button is active low
  * @return Result of addition
  */
-Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
+result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
     uint8_t pullup, uint8_t activeLow)
 {
   if(!(m_readPinFunct && m_writePinFunct))
@@ -290,7 +290,7 @@ Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin,
  * @param pin IO pin
  * @return Result of addition
  */
-Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin)
+result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin)
 {
   return addCustomButton(bid, pin, m_defaultPullup, m_defaultActiveLow);
 }
@@ -304,7 +304,7 @@ Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t pin)
  * @param colPin IO pin for column
  * @return Result of addition
  */
-Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
+result_t UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t colPin)
 {
   if(!( m_readPinFunct && m_writePinFunct))
     return RESULT_NO_CUSTOM_IO;
@@ -328,7 +328,7 @@ Result UniversalButtons::addCustomButton(buttonid_t bid, pin_t rowPin, pin_t col
  *
  * @param bid Button ID
  */
-Result UniversalButtons::removeButton(buttonid_t bid)
+result_t UniversalButtons::removeButton(buttonid_t bid)
 {
   if(m_buttonCount == 0)
   {
