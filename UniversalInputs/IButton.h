@@ -3,14 +3,32 @@
 
 #include "IInputDevice.h"
 
+#include "Arduino.h"
+
+
 class IButton : public IInputDevice
 {
   public:
-    IButton(inputid_t id) : IInputDevice(id) {}
+    IButton(inputid_t id, inputtime_t debounceDelay = 50);
 
-    virtual bool isActive();
-    virtual inputtime_t lastStateChange();
-    virtual inputtime_t lastAciveTime();
+    bool poll();
+
+    bool isActive() { return m_active; }
+
+    inputtime_t lastStateChange() { return m_lastStateChange; }
+    inputtime_t lastAciveTime() { return m_lastActiveDuration; }
+
+  protected:
+    virtual uint8_t getPhysicalState() = 0;
+
+  private:
+    bool m_active;
+
+    inputtime_t m_lastStateChange;
+    inputtime_t m_lastActiveDuration;
+
+    inputtime_t m_debounceDelay;
+
 };
 
 #endif
