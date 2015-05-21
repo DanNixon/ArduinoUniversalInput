@@ -6,14 +6,6 @@ install:
   - sudo pip install ino
 
 script:
-  - ./.generate_and_build.sh UniversalButtons/examples/HelloWorld
-  - ./.generate_and_build.sh UniversalButtons/examples/MatrixExample
-  - ./.generate_and_build.sh UniversalButtons/examples/PerformanceTest
-  - ./.generate_and_build.sh UniversalButtons/examples/Test
-  - ./.generate_and_build.sh UniversalJoysticks/examples/HelloWorld
-  - ./.generate_and_build.sh UniversalJoysticks/examples/DefaultConfiguration
-  - ./.generate_and_build.sh UniversalJoysticks/examples/CalibrationHelper
-  - ./.generate_and_build.sh UniversalJoysticks/examples/Test
 
 os:
   - linux
