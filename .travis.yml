@@ -6,6 +6,9 @@ install:
   - sudo pip install ino
 
 script:
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoButtonBasic
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoMatrixButtonBasic
+  - ./.generate_and_build.sh UniversalInputs/examples/UniversalInputManager
 
 os:
   - linux
