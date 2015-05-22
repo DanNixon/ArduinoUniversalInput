@@ -16,7 +16,7 @@ class IButton : public IInputDevice
     bool isActive() { return m_active; }
 
     inputtime_t lastStateChange() { return m_lastStateChange; }
-    inputtime_t lastAciveTime() { return m_lastActiveDuration; }
+    inputtime_t lastActiveDuration() { return m_lastActiveDuration; }
 
   protected:
     virtual uint8_t getPhysicalState() = 0;
