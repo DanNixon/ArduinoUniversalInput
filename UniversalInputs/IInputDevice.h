@@ -9,6 +9,8 @@ class IInputDevice
     IInputDevice(inputid_t id) : m_id(id) {}
 
     inputid_t getID() { return m_id; }
+
+    virtual UniversalInputType type() = 0;
     virtual bool poll() = 0;
 
   private:
