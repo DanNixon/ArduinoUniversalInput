@@ -49,10 +49,12 @@ inputanalog_t IJoystick::getCentredValue()
 
 inputanalog_t IJoystick::getValue()
 {
+  inputanalog_t value = getCentredValue();
+
   if(m_transform != NULL)
-    return m_transform->transform(getCentredValue());
-  else
-    return getCentredValue();
+    value = m_transform->transform(value);
+
+  return value;
 }
 
 
