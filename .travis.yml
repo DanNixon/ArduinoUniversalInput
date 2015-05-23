@@ -6,14 +6,13 @@ install:
   - sudo pip install ino
 
 script:
-  - ./.generate_and_build.sh UniversalButtons/examples/HelloWorld
-  - ./.generate_and_build.sh UniversalButtons/examples/MatrixExample
-  - ./.generate_and_build.sh UniversalButtons/examples/PerformanceTest
-  - ./.generate_and_build.sh UniversalButtons/examples/Test
-  - ./.generate_and_build.sh UniversalJoysticks/examples/HelloWorld
-  - ./.generate_and_build.sh UniversalJoysticks/examples/DefaultConfiguration
-  - ./.generate_and_build.sh UniversalJoysticks/examples/CalibrationHelper
-  - ./.generate_and_build.sh UniversalJoysticks/examples/Test
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoButtonBasic
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoMatrixButtonBasic
+  - ./.generate_and_build.sh UniversalInputs/examples/UniversalInputManager
+  - ./.generate_and_build.sh UniversalInputs/examples/UniversalInputManagerDefaultAdd
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoJoystickBasic
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoJoystickMapping
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoJoystickNoCentre
 
 os:
   - linux
