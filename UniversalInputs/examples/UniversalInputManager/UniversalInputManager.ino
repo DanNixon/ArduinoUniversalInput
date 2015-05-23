@@ -21,7 +21,7 @@ void loop()
   inputs.poll();
 }
 
-void handler(UniversalInputType type, IInputDevice * device)
+void handler(inputtype_t type, IInputDevice * device)
 {
   if(type == UIT_BUTTON)
   {

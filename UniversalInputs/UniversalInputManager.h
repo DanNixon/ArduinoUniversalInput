@@ -26,6 +26,7 @@ class UniversalInputManager
     void setCallback(inputcallback_t callback);
     bool addDevice(IInputDevice * device);
     IInputDevice * getDevice(inputid_t id);
+    bool deviceExists(inputid_t id);
 
     // ArduinoButton functions
     bool setButtonDefaults(bool activeLow, bool pullUp, inputtime_t debounce);

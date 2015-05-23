@@ -43,6 +43,9 @@ void UniversalInputManager::setCallback(inputcallback_t callback)
 
 bool UniversalInputManager::addDevice(IInputDevice * device)
 {
+  if(deviceExists(device->getID()))
+    return false;
+
   UIMListNode * newNode = new UIMListNode();
   newNode->device = device;
   newNode->next = NULL;
@@ -56,14 +59,8 @@ bool UniversalInputManager::addDevice(IInputDevice * device)
     UIMListNode * item = m_listHead;
     while(item->next != NULL)
     {
-      if(item->device->getID() == device->getID())
-        return false;
-
       item = item->next;
     }
-
-    if(item->device->getID() == device->getID())
-      return false;
 
     item->next = newNode;
   }
@@ -71,6 +68,7 @@ bool UniversalInputManager::addDevice(IInputDevice * device)
   m_numDevices++;
   return true;
 }
+
 
 IInputDevice * UniversalInputManager::getDevice(inputid_t id)
 {
@@ -86,6 +84,12 @@ IInputDevice * UniversalInputManager::getDevice(inputid_t id)
   }
 
   return NULL;
+}
+
+
+bool UniversalInputManager::deviceExists(inputid_t id)
+{
+  return getDevice(id) != NULL;
 }
 
 
