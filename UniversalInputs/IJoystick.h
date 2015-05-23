@@ -10,7 +10,7 @@ class IJoystick : public IInputDevice
   public:
     IJoystick(inputid_t id);
 
-    UniversalInputType type() { return UIT_JOYSTICK; }
+    inputtype_t type() { return UIT_JOYSTICK; }
 
     bool poll();
 

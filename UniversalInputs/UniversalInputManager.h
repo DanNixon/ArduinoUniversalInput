@@ -1,11 +1,11 @@
 #ifndef _ARDUINOUNIVERSALINPUTS_INPUTMANAGER_H
 #define _ARDUINOUNIVERSALINPUTS_INPUTMANAGER_H
 
-#include "Types.h"
+#include "UniversalInputTypes.h"
 #include "IInputDevice.h"
 
 
-typedef void (* inputcallback_t)(UniversalInputType, IInputDevice *);
+typedef void (* inputcallback_t)(inputtype_t, IInputDevice *);
 
 
 struct UIMListNode

@@ -1,7 +1,7 @@
 #ifndef _ARDUINOUNIVERSALINPUTS_IINPUTDEVICE_H
 #define _ARDUINOUNIVERSALINPUTS_IINPUTDEVICE_H
 
-#include "Types.h"
+#include "UniversalInputTypes.h"
 
 class IInputDevice
 {
@@ -10,7 +10,7 @@ class IInputDevice
 
     inputid_t getID() { return m_id; }
 
-    virtual UniversalInputType type() = 0;
+    virtual inputtype_t type() = 0;
     virtual bool poll() = 0;
 
   private:

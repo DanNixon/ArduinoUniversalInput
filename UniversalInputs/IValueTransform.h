@@ -1,7 +1,7 @@
 #ifndef _ARDUINOUNIVERSALINPUTS_IVALUETRANSFORM_H
 #define _ARDUINOUNIVERSALINPUTS_IVALUETRANSFORM_H
 
-#include "Types.h"
+#include "UniversalInputTypes.h"
 
 class IValueTransform
 {
