@@ -12,10 +12,10 @@ class IButton : public IInputDevice
     IButton(inputid_t id, inputtime_t debounceDelay = 50);
 
     UniversalInputType type() { return UIT_BUTTON; }
+
     bool poll();
 
     bool isActive() { return m_active; }
-
     inputtime_t lastStateChange() { return m_lastStateChange; }
     inputtime_t lastActiveDuration() { return m_lastActiveDuration; }
 
