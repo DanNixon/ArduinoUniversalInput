@@ -24,7 +24,9 @@ class IJoystick : public IInputDevice
     inputanalog_t getThreshold() { return m_threshold; }
 
     bool setPoints(inputanalog_t low, inputanalog_t centre, inputanalog_t high);
+    bool setPoints(inputanalog_t low, inputanalog_t high);
     bool setDeadbands(inputanalog_t low, inputanalog_t centre, inputanalog_t high);
+    bool setDeadbands(inputanalog_t low, inputanalog_t high);
 
     inputanalog_t getLowPoint() { return m_low; }
     inputanalog_t getCentrePoint() { return m_centre; }

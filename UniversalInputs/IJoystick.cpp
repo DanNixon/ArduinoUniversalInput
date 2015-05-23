@@ -75,6 +75,12 @@ bool IJoystick::setPoints(inputanalog_t low, inputanalog_t centre, inputanalog_t
 }
 
 
+bool IJoystick::setPoints(inputanalog_t low, inputanalog_t high)
+{
+  return setPoints(low, low, high);
+}
+
+
 bool IJoystick::setDeadbands(inputanalog_t low, inputanalog_t centre, inputanalog_t high)
 {
   if((low < 0) || (centre < 0) || (high < 0))
@@ -85,6 +91,12 @@ bool IJoystick::setDeadbands(inputanalog_t low, inputanalog_t centre, inputanalo
   m_deadbandHigh = high;
 
   return true;
+}
+
+
+bool IJoystick::setDeadbands(inputanalog_t low, inputanalog_t high)
+{
+  return setDeadbands(low, low, high);
 }
 
 
