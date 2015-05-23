@@ -9,6 +9,10 @@ script:
   - ./.generate_and_build.sh UniversalInputs/examples/ArduinoButtonBasic
   - ./.generate_and_build.sh UniversalInputs/examples/ArduinoMatrixButtonBasic
   - ./.generate_and_build.sh UniversalInputs/examples/UniversalInputManager
+  - ./.generate_and_build.sh UniversalInputs/examples/UniversalInputManagerDefaultAdd
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoJoystickBasic
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoJoystickMapping
+  - ./.generate_and_build.sh UniversalInputs/examples/ArduinoJoystickNoCentre
 
 os:
   - linux
