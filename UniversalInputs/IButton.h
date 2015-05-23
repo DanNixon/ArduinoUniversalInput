@@ -13,6 +13,9 @@ class IButton : public IInputDevice
 
     UniversalInputType type() { return UIT_BUTTON; }
 
+    bool setDebounceDelay(inputtime_t debounce);
+    inputtime_t getDebounceDelay() { return m_debounceDelay; }
+
     bool poll();
 
     bool isActive() { return m_active; }

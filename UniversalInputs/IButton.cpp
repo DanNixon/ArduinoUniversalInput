@@ -11,6 +11,16 @@ IButton::IButton(inputid_t id, inputtime_t debounceDelay) :
 }
 
 
+bool IButton::setDebounceDelay(inputtime_t debounce)
+{
+  if(debounce < 0)
+    return false;
+
+  m_debounceDelay = debounce;
+  return false;
+}
+
+
 bool IButton::poll()
 {
   if(millis() - m_lastStateChange > m_debounceDelay)
