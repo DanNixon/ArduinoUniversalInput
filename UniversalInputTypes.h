@@ -4,7 +4,10 @@
 #include <inttypes.h>
 
 #define NULL 0
+
+#ifdef __AVR__
 typedef uint16_t size_t;
+#endif
 
 typedef uint16_t inputid_t;
 typedef uint8_t inputpin_t;
