@@ -14,7 +14,8 @@ typedef int32_t inputanalog_t;
 enum inputtype_t
 {
   UIT_BUTTON,
-  UIT_JOYSTICK
+  UIT_JOYSTICK,
+  UIT_ENCODER
 };
 
 #endif

@@ -1,0 +1,65 @@
+#######################################
+# Syntax Coloring Map For UniversalInputs
+####################################### 
+# Class
+#######################################
+
+ArduinoButton	KEYWORD1
+ArduinoJoystick	KEYWORD1
+ArduinoMatrixButton	KEYWORD1
+IButton	KEYWORD1
+IJoystick	KEYWORD1
+IInputDevice	KEYWORD1
+IValueTransform	KEYWORD1
+UniversalINputManager	KEYWORD1
+LinearTransform	KEYWORD1
+
+#######################################
+# Methods and Functions 
+#######################################	
+
+# UniversalInputManager
+deviceCount	KEYWORD2
+poll	KEYWORD2
+setCallback	KEYWORD2
+addDevice	KEYWORD2
+getDevice	KEYWORD2
+deviceExists	KEYWORD2
+setButtonDefault	KEYWORD2
+addNewButton	KEYWORD2
+addNewJoystick	KEYWORD2
+
+#IInputDevice
+type	KEYWORD2
+getID	KEYWORD2
+
+#IButton
+setDebounceDelay	KEYWORD2
+getDebounceDelay	KEYWORD2
+isActive	KEYWORD2
+lastStateChange	KEYWORD2
+lastActiveDuration	KEYWORD2
+
+#IJoystick
+getRawValue	KEYWORD2
+getCentredValue	KEYWORD2
+getValue	KEYWORD2
+setTransformation	KEYWORD2
+setThreshold	KEYWORD2
+getThreshold	KEYWORD2
+setPoints	KEYWORD2
+setDeadbands	KEYWORD2
+getLowPoint	KEYWORD2
+getCentrePoint	KEYWORD2
+getHighPoint	KEYWORD2
+getLowDeadband	KEYWORD2
+getCentreDeadband	KEYWORD2
+getHighDeadband	KEYWORD2
+
+#######################################
+# Constants
+#######################################
+ 
+UIT_BUTTON			LITERAL1
+UIT_JOYSTICK		LITERAL1
+UIT_ENCODER		LITERAL1
