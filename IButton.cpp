@@ -23,7 +23,7 @@ bool IButton::setDebounceDelay(inputtime_t debounce)
 
 bool IButton::poll()
 {
-  if(millis() - m_lastStateChange > m_debounceDelay)
+  if((millis() - m_lastStateChange > m_debounceDelay) || (m_lastStateChange == 0))
   {
     bool state = getPhysicalState();
     if(state != m_active)
