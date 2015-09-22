@@ -26,7 +26,7 @@ size_t UniversalInputManager::poll()
       updatedDevices++;
 
       if (m_callback)
-        m_callback(device->type(), device);
+        (*m_callback)(device->type(), device);
     }
 
     item = item->next;
@@ -35,9 +35,40 @@ size_t UniversalInputManager::poll()
   return updatedDevices;
 }
 
-void UniversalInputManager::setCallback(inputcallback_t callback)
+bool UniversalInputManager::setCallback(IUniversalInputCallback *callback)
 {
+  if(callback == NULL)
+    return false;
+  
+  if(m_callback != NULL)
+    delete m_callback;
+  
+  m_callback = new UniversalInputCallbackHandler(callback);
+  return true;
+}
+
+bool UniversalInputManager::setCallback(UniversalInputCallbackHandler::UniversalInputCallbackFunction callback)
+{
+  if(callback == NULL)
+    return false;
+  
+  if(m_callback != NULL)
+    delete m_callback;
+  
+  m_callback = new UniversalInputCallbackHandler(callback);
+  return true;
+}
+
+bool UniversalInputManager::setCallback(UniversalInputCallbackHandler *callback)
+{
+  if(callback == NULL)
+    return false;
+  
+  if(m_callback != NULL)
+    delete m_callback;
+  
   m_callback = callback;
+  return true;
 }
 
 bool UniversalInputManager::addDevice(IInputDevice *device)

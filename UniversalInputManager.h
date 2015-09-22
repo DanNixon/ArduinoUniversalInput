@@ -3,8 +3,7 @@
 
 #include "UniversalInputTypes.h"
 #include "IInputDevice.h"
-
-typedef void (*inputcallback_t)(inputtype_t, IInputDevice *);
+#include "UniversalInputCallbackHandler.h"
 
 struct UIMListNode
 {
@@ -20,7 +19,11 @@ public:
   size_t deviceCount() { return m_numDevices; }
 
   size_t poll();
-  void setCallback(inputcallback_t callback);
+  
+  bool setCallback(IUniversalInputCallback *callback);
+  bool setCallback(UniversalInputCallbackHandler::UniversalInputCallbackFunction callback);
+  bool setCallback(UniversalInputCallbackHandler *callback);
+  
   bool addDevice(IInputDevice *device);
   IInputDevice *getDevice(inputid_t id);
   bool deviceExists(inputid_t id);
@@ -37,7 +40,7 @@ public:
 private:
   size_t m_numDevices;
   UIMListNode *m_listHead;
-  inputcallback_t m_callback;
+  UniversalInputCallbackHandler *m_callback;
 
   bool m_defaultActiveLow;
   bool m_defaultPullUp;
