@@ -4,11 +4,10 @@
 class IUniversalInputCallback
 {
 public:
-  IUniversalInputCallback()
-  {
-  }
-  
-  virtual void handleUniversalInputEvent(inputtype_t type, IInputDevice * device) = 0;
+  IUniversalInputCallback() {}
+
+  virtual void handleUniversalInputEvent(inputtype_t type,
+                                         IInputDevice *device) = 0;
 };
 
 #endif

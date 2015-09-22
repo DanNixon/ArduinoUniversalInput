@@ -3,20 +3,20 @@
 
 #include "IUniversalInputCallback.h"
 
-class UniversalInputCallbackFunctionHandler: public IUniversalInputCallback
+class UniversalInputCallbackFunctionHandler : public IUniversalInputCallback
 {
 public:
   typedef void (*UniversalInputCallbackFunction)(inputtype_t, IInputDevice *);
 
-  UniversalInputCallbackFunctionHandler(UniversalInputCallbackFunction func):
-    IUniversalInputCallback(),
-    m_function(func)
+  UniversalInputCallbackFunctionHandler(UniversalInputCallbackFunction func)
+      : IUniversalInputCallback()
+      , m_function(func)
   {
   }
 
   void handleUniversalInputEvent(inputtype_t type, IInputDevice *device)
   {
-    if(m_function != NULL)
+    if (m_function != NULL)
       m_function(type, device);
   }
 

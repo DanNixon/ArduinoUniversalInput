@@ -37,18 +37,20 @@ size_t UniversalInputManager::poll()
 
 bool UniversalInputManager::setCallback(IUniversalInputCallback *callback)
 {
-  if(callback == NULL)
+  if (callback == NULL)
     return false;
-  
+
   m_callback = callback;
   return true;
 }
 
-bool UniversalInputManager::setCallback(UniversalInputCallbackFunctionHandler::UniversalInputCallbackFunction callback)
+bool UniversalInputManager::setCallback(
+    UniversalInputCallbackFunctionHandler::UniversalInputCallbackFunction
+        callback)
 {
-  if(callback == NULL)
+  if (callback == NULL)
     return false;
-  
+
   m_callback = new UniversalInputCallbackFunctionHandler(callback);
   return true;
 }

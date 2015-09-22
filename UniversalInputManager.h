@@ -19,10 +19,12 @@ public:
   size_t deviceCount() { return m_numDevices; }
 
   size_t poll();
-  
+
   bool setCallback(IUniversalInputCallback *callback);
-  bool setCallback(UniversalInputCallbackFunctionHandler::UniversalInputCallbackFunction callback);
-  
+  bool setCallback(
+      UniversalInputCallbackFunctionHandler::UniversalInputCallbackFunction
+          callback);
+
   bool addDevice(IInputDevice *device);
   IInputDevice *getDevice(inputid_t id);
   bool deviceExists(inputid_t id);
