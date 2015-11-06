@@ -11,6 +11,10 @@ public:
   {
   }
 
+  virtual ~IInputDevice()
+  {
+  }
+
   inputid_t getID() { return m_id; }
 
   virtual inputtype_t type() = 0;

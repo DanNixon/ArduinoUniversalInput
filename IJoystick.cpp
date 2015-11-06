@@ -12,6 +12,10 @@ IJoystick::IJoystick(inputid_t id)
   setDeadbands(0, 0, 0);
 }
 
+IJoystick::~IJoystick()
+{
+}
+
 bool IJoystick::poll()
 {
   inputanalog_t value = getPhysicalValue();

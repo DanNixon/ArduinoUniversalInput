@@ -107,7 +107,7 @@ bool UniversalInputManager::deviceExists(inputid_t id)
 bool UniversalInputManager::setButtonDefaults(bool activeLow, bool pullUp,
                                               inputtime_t debounce)
 {
-  if (debounce < 0)
+  if (debounce <= 0)
     return false;
 
   m_defaultActiveLow = activeLow;

@@ -12,6 +12,10 @@ public:
   {
   }
 
+  virtual ~IValueTransform()
+  {
+  };
+
   virtual inputanalog_t transform(inputanalog_t raw) = 0;
 
 protected:

@@ -9,6 +9,7 @@ class IButton : public IInputDevice
 {
 public:
   IButton(inputid_t id, inputtime_t debounceDelay = 50);
+  virtual ~IButton();
 
   inputtype_t type() { return UIT_BUTTON; }
 

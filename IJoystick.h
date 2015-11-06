@@ -8,6 +8,7 @@ class IJoystick : public IInputDevice
 {
 public:
   IJoystick(inputid_t id);
+  virtual ~IJoystick();
 
   inputtype_t type() { return UIT_JOYSTICK; }
 
