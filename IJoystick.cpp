@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "IJoystick.h"
 
 #include "Arduino.h"

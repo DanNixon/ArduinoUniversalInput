@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "ArduinoButton.h"
 
 ArduinoButton::ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow,

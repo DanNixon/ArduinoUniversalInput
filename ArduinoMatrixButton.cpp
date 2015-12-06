@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "ArduinoMatrixButton.h"
 
 ArduinoMatrixButton::ArduinoMatrixButton(inputid_t id, inputpin_t colPin,

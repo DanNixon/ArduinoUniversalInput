@@ -1,9 +1,15 @@
+/*! \file */
+
 #ifndef _ARDUINOUNIVERSALINPUTS_IJOYSTICK_H
 #define _ARDUINOUNIVERSALINPUTS_IJOYSTICK_H
 
 #include "IInputDevice.h"
 #include "IValueTransform.h"
 
+/*!
+ * \class IJoystick
+ * \brief Represents a joystick or potentiometer.
+ */
 class IJoystick : public IInputDevice
 {
 public:

@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "UniversalInputManager.h"
 
 #include "ArduinoButton.h"

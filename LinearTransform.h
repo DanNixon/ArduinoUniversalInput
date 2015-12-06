@@ -1,11 +1,22 @@
+/*! \file */
+
 #ifndef _ARDUINOUNIVERSALINPUTS_LINEARVALUETRANSFORM_H
 #define _ARDUINOUNIVERSALINPUTS_LINEARVALUETRANSFORM_H
 
 #include "IValueTransform.h"
 
+/*!
+ * \class LinearTransform
+ * \brief Value transformation for basic linear interpolation.
+ */
 class LinearTransform : public IValueTransform
 {
 public:
+  /*!
+   * \copydoc IValueTransform::IValueTransform
+   * \param toLow Lowest mapped output value
+   * \param toHigh Highest mapped output value
+   */
   LinearTransform(inputanalog_t fromLow, inputanalog_t fromHigh,
                   inputanalog_t toLow, inputanalog_t toHigh)
       : IValueTransform(fromLow, fromHigh)
@@ -14,6 +25,11 @@ public:
   {
   }
 
+  /*!
+   * \copydoc IValueTransform::transform
+   *
+   * Performs basic linear interpolation.
+   */
   inputanalog_t transform(inputanalog_t raw)
   {
     if (raw == 0)
@@ -24,8 +40,8 @@ public:
   }
 
 private:
-  inputanalog_t m_toLow;
-  inputanalog_t m_toHigh;
+  inputanalog_t m_toLow; //!< Lowest output value
+  inputanalog_t m_toHigh; //!< Highest output value
 };
 
 #endif

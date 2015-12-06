@@ -2,12 +2,18 @@ language: c
 
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - doxygen
+
 before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
-  
+
 script:
   - build_main_platforms
-  
+  - doxygen Doxyfile
+
 notifications:
   email:
     on_success: change

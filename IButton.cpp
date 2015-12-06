@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "IButton.h"
 
 IButton::IButton(inputid_t id, inputtime_t debounceDelay)

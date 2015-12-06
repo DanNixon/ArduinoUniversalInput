@@ -1,3 +1,5 @@
+/*! \file */
+
 #ifndef _ARDUINOUNIVERSALINPUTS_IBUTTON_H
 #define _ARDUINOUNIVERSALINPUTS_IBUTTON_H
 
@@ -5,6 +7,10 @@
 
 #include "Arduino.h"
 
+/*!
+ * \class IButton
+ * \brief Represents a two state button.
+ */
 class IButton : public IInputDevice
 {
 public:
