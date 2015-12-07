@@ -12,7 +12,7 @@ before_install:
 
 script:
   - build_main_platforms
-  - doxygen Doxyfile
+  - doxygen
 
 notifications:
   email:

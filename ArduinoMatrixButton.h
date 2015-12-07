@@ -16,13 +16,13 @@ public:
 
   /*!
    * \brief Gets the pin attached to the matrix column for this button.
-   * \rueturn Pin number
+   * \return Pin number
    */
   inputpin_t getColPin() { return m_colPin; }
 
   /*!
    * \brief Gets the pin attached to the matrix row for this button.
-   * \rueturn Pin number
+   * \return Pin number
    */
   inputpin_t getRowPin() { return m_rowPin; }
 

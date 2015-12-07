@@ -41,6 +41,7 @@ public:
 
   /*!
    * \brief Polls this input device for change.
+   * \return True if any state change occurred.
    */
   virtual bool poll() = 0;
 

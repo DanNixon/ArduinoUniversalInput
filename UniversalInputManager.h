@@ -7,12 +7,21 @@
 #include "IInputDevice.h"
 #include "UniversalInputCallbackFunctionHandler.h"
 
+/*!
+ * \struct UIMListNode
+ * \brief Node type for linked list of IInputDevice.
+ */
 struct UIMListNode
 {
-  UIMListNode *next;
-  IInputDevice *device;
+  UIMListNode *next; //!< Pointer to next node
+  IInputDevice *device; //!< Pointer to input device
 };
 
+/*!
+ * \class UniversalInputManager
+ * \brief Handles the storage, polling and event handling for multiple input
+ *        devices.
+ */
 class UniversalInputManager
 {
 public:
