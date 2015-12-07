@@ -16,17 +16,33 @@ public:
   IJoystick(inputid_t id);
   virtual ~IJoystick();
 
+  /*!
+   * \copydoc IInputDevice::type
+   */
   inputtype_t type() { return UIT_JOYSTICK; }
 
+  /*!
+   * \copydoc IInputDevice::poll
+   */
   bool poll();
 
+  /*!
+   * \brief Gets last read raw value.
+   * \return Raw value
+   */
   inputanalog_t getRawValue() { return m_value; }
+
   inputanalog_t getCentredValue();
   inputanalog_t getValue();
 
   void setTransformation(IValueTransform *transform);
 
   bool setThreshold(inputanalog_t threshold);
+
+  /*!
+   * \brief Returns the threshold value.
+   * \return Threshold
+   */
   inputanalog_t getThreshold() { return m_threshold; }
 
   bool setPoints(inputanalog_t low, inputanalog_t centre, inputanalog_t high);
@@ -35,33 +51,66 @@ public:
                     inputanalog_t high);
   bool setDeadbands(inputanalog_t low, inputanalog_t high);
 
+  /*!
+   * \brief Gets the low end point raw value.
+   * \return Low end point
+   */
   inputanalog_t getLowPoint() { return m_low; }
+
+  /*!
+   * \brief Gets the centre point raw value.
+   * \return Centre point
+   */
   inputanalog_t getCentrePoint() { return m_centre; }
+
+  /*!
+   * \brief Gets the high end point raw value.
+   * \return High end point
+   */
   inputanalog_t getHighPoint() { return m_high; }
 
+  /*!
+   * \brief Gets the deadband width at the low end point.
+   * \return Low deadband width
+   */
   inputanalog_t getLowDeadband() { return m_deadbandLow; }
+
+  /*!
+   * \brief Gets the deadband width at the centre point.
+   * \return Centre deadband width
+   */
   inputanalog_t getCentreDeadband() { return m_deadbandCentre; }
+
+  /*!
+   * \brief Gets the deadband width at the high end point.
+   * \return High deadband width
+   */
   inputanalog_t getHighDeadband() { return m_deadbandHigh; }
 
 protected:
+  /*!
+   * \brief Gets the raw value form the joystick.
+   * \return Raw value
+   */
   virtual inputanalog_t getPhysicalValue() = 0;
 
 private:
   bool withinTolerance(inputanalog_t a, inputanalog_t b,
                        inputanalog_t tolerance);
 
-  IValueTransform *m_transform;
-  inputanalog_t m_threshold;
+  IValueTransform *m_transform; //!< Value thransformation to apply to value
+  inputanalog_t
+      m_threshold; //!< Threshold change in raw value to fire a callback
 
-  inputanalog_t m_value;
+  inputanalog_t m_value; //!< Last read raw value
 
-  inputanalog_t m_low;
-  inputanalog_t m_centre;
-  inputanalog_t m_high;
+  inputanalog_t m_low;    //!< Low end point (raw value)
+  inputanalog_t m_centre; //!< Centre point (raw value)
+  inputanalog_t m_high;   //!< High end point (raw value)
 
-  inputanalog_t m_deadbandLow;
-  inputanalog_t m_deadbandCentre;
-  inputanalog_t m_deadbandHigh;
+  inputanalog_t m_deadbandLow;    //!< Deadband at low end point (raw value)
+  inputanalog_t m_deadbandCentre; //!< Deadband at centre point (raw value)
+  inputanalog_t m_deadbandHigh;   //!< Deadband at high end point (raw value)
 };
 
 #endif

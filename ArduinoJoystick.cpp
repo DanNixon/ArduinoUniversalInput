@@ -5,7 +5,7 @@
 #include "Arduino.h"
 
 /*!
- * \brief CReates a new joystick on an Arduino ADC.
+ * \brief Creates a new joystick on an Arduino ADC.
  * \param id ID of the joystick
  * \param adc ADC pin joystick is attached to
  */

@@ -27,6 +27,10 @@ class UniversalInputManager
 public:
   UniversalInputManager();
 
+  /*!
+   * \brief Returns the number of devices that have been added.
+   * \return Number of devices
+   */
   size_t deviceCount() { return m_numDevices; }
 
   size_t poll();
@@ -50,13 +54,13 @@ public:
   bool addNewJoystick(inputid_t id, inputpin_t pin);
 
 private:
-  size_t m_numDevices;
-  UIMListNode *m_listHead;
-  IUniversalInputCallback *m_callback;
+  size_t m_numDevices; //!< Number of added devices
+  UIMListNode *m_listHead; //!< Pointer to the head node of the linked list
+  IUniversalInputCallback *m_callback; //!< Callback handler
 
-  bool m_defaultActiveLow;
-  bool m_defaultPullUp;
-  inputtime_t m_defaultDebounce;
+  bool m_defaultActiveLow; //!< Default active low state for new buttons
+  bool m_defaultPullUp; //!< Default pull up state for new buttons
+  inputtime_t m_defaultDebounce; //!< Defautl debounce time for new buttons
 };
 
 #endif
