@@ -5,6 +5,10 @@
 
 #include "IJoystick.h"
 
+/*!
+ * \class ArduinoJoystick
+ * \brief Represents a joystick attached to an Arduino ADC pin.
+ */
 class ArduinoJoystick : public IJoystick
 {
 public:
@@ -14,7 +18,7 @@ protected:
   inputanalog_t getPhysicalValue();
 
 private:
-  inputpin_t m_adcPin;
+  inputpin_t m_adcPin; //!< ADC pin attached to the joystick
 };
 
 #endif

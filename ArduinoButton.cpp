@@ -2,6 +2,13 @@
 
 #include "ArduinoButton.h"
 
+/*!
+ * \brief Creates a new button on an Arduino pin.
+ * \param id ID of the button
+ * \param pin Pin the button is attached to
+ * \param activeLow If the button logic is active low
+ * \param pullUp If the pin should be pulled high
+ */
 ArduinoButton::ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow,
                              bool pullUp)
     : IButton(id)
@@ -15,6 +22,9 @@ ArduinoButton::ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow,
     pinMode(pin, INPUT);
 }
 
+/*!
+ * \copydoc IButton::getPhysicalState
+ */
 uint8_t ArduinoButton::getPhysicalState()
 {
   if (m_activeLow)

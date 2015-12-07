@@ -14,6 +14,10 @@
 class IInputDevice
 {
 public:
+  /*!
+   * \brief Creates a new input device.
+   * \param id ID of the inout device
+   */
   IInputDevice(inputid_t id)
       : m_id(id)
   {

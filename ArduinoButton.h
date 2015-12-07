@@ -5,23 +5,41 @@
 
 #include "IButton.h"
 
+/*!
+ * \class ArduinoButton
+ * \brief Represents a button on an Arduino pin.
+ */
 class ArduinoButton : public IButton
 {
 public:
   ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow = true,
                 bool pullUp = true);
 
+  /*!
+   * \brief Gets the pin the button is attached to.
+   * \return Pin number
+   */
   inputpin_t getPin() { return m_pin; }
+
+  /*!
+   * \brief Determines if the pin logic is active low.
+   * \return True if active low
+   */
   bool isActiveLow() { return m_activeLow; }
+
+  /*!
+   * \brief Determines if the pin is pulled high.
+   * \return True if pull up active
+   */
   bool isPullUp() { return m_pullUp; }
 
 protected:
   uint8_t getPhysicalState();
 
 private:
-  inputpin_t m_pin;
-  bool m_activeLow;
-  bool m_pullUp;
+  inputpin_t m_pin; //!< Pin button is attached to
+  bool m_activeLow; //!< If the button logic is active low
+  bool m_pullUp; //!< If the button pin is pulled up
 };
 
 #endif
