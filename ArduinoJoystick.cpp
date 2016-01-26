@@ -19,7 +19,7 @@ ArduinoJoystick::ArduinoJoystick(inputid_t id, inputpin_t adc)
 /*!
  * \copydoc IJoystick::getPhysicalValue
  */
-inputanalog_t ArduinoJoystick::getPhysicalValue()
+inputanalog_t ArduinoJoystick::getPhysicalValue() const
 {
   return analogRead(m_adcPin);
 }

@@ -42,7 +42,7 @@ bool IJoystick::poll()
  * \see IJoystick::getRawValue
  * \see IJoystick::getValue
  */
-inputanalog_t IJoystick::getCentredValue()
+inputanalog_t IJoystick::getCentredValue() const
 {
   inputanalog_t value = getRawValue();
 
@@ -69,7 +69,7 @@ inputanalog_t IJoystick::getCentredValue()
  * This is the value of IJoystick::getCentredValue with the transformation set
  * by IJoystick::setTransformation applied.
  */
-inputanalog_t IJoystick::getValue()
+inputanalog_t IJoystick::getValue() const
 {
   inputanalog_t value = getCentredValue();
 
@@ -187,7 +187,7 @@ bool IJoystick::setThreshold(inputanalog_t threshold)
  * Returns true if abs(a - b) < tolerance
  */
 bool IJoystick::withinTolerance(inputanalog_t a, inputanalog_t b,
-                                inputanalog_t tolerance)
+                                inputanalog_t tolerance) const
 {
   return (abs(a - b) < tolerance);
 }

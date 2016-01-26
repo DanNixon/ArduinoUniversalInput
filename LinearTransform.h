@@ -30,7 +30,7 @@ public:
    *
    * Performs basic linear interpolation.
    */
-  inputanalog_t transform(inputanalog_t raw)
+  inputanalog_t transform(inputanalog_t raw) const
   {
     if (raw == 0)
       return 0;

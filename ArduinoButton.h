@@ -19,22 +19,22 @@ public:
    * \brief Gets the pin the button is attached to.
    * \return Pin number
    */
-  inputpin_t getPin() { return m_pin; }
+  inputpin_t getPin() const { return m_pin; }
 
   /*!
    * \brief Determines if the pin logic is active low.
    * \return True if active low
    */
-  bool isActiveLow() { return m_activeLow; }
+  bool isActiveLow() const { return m_activeLow; }
 
   /*!
    * \brief Determines if the pin is pulled high.
    * \return True if pull up active
    */
-  bool isPullUp() { return m_pullUp; }
+  bool isPullUp() const { return m_pullUp; }
 
 protected:
-  uint8_t getPhysicalState();
+  uint8_t getPhysicalState() const;
 
 private:
   inputpin_t m_pin; //!< Pin button is attached to

@@ -31,13 +31,13 @@ public:
    * \brief Retrieves the ID of this device.
    * \return Device ID
    */
-  inputid_t getID() { return m_id; }
+  inputid_t getID() const { return m_id; }
 
   /*!
    * \brief Retrieves the type of this device.
    * \return Device type
    */
-  virtual inputtype_t type() = 0;
+  virtual inputtype_t type() const = 0;
 
   /*!
    * \brief Polls this input device for change.

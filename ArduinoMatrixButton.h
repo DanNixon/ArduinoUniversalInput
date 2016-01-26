@@ -18,16 +18,16 @@ public:
    * \brief Gets the pin attached to the matrix column for this button.
    * \return Pin number
    */
-  inputpin_t getColPin() { return m_colPin; }
+  inputpin_t getColPin() const { return m_colPin; }
 
   /*!
    * \brief Gets the pin attached to the matrix row for this button.
    * \return Pin number
    */
-  inputpin_t getRowPin() { return m_rowPin; }
+  inputpin_t getRowPin() const { return m_rowPin; }
 
 protected:
-  uint8_t getPhysicalState();
+  uint8_t getPhysicalState() const;
 
 private:
   inputpin_t m_colPin; //!< Pin connected to button matrix column

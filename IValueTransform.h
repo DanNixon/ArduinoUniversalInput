@@ -32,7 +32,7 @@ public:
    * \param raw Value to transform
    * \return Transformed value
    */
-  virtual inputanalog_t transform(inputanalog_t raw) = 0;
+  virtual inputanalog_t transform(inputanalog_t raw) const = 0;
 
 protected:
   inputanalog_t m_fromLow; //!< Lowest input value

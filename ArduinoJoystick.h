@@ -15,7 +15,7 @@ public:
   ArduinoJoystick(inputid_t id, inputpin_t adc);
 
 protected:
-  inputanalog_t getPhysicalValue();
+  inputanalog_t getPhysicalValue() const;
 
 private:
   inputpin_t m_adcPin; //!< ADC pin attached to the joystick

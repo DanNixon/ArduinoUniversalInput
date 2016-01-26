@@ -25,7 +25,7 @@ ArduinoButton::ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow,
 /*!
  * \copydoc IButton::getPhysicalState
  */
-uint8_t ArduinoButton::getPhysicalState()
+uint8_t ArduinoButton::getPhysicalState() const
 {
   if (m_activeLow)
     return !digitalRead(m_pin);

@@ -23,7 +23,7 @@ ArduinoMatrixButton::ArduinoMatrixButton(inputid_t id, inputpin_t colPin,
 /*!
  * \copydoc IButton::getPhysicalState
  */
-uint8_t ArduinoMatrixButton::getPhysicalState()
+uint8_t ArduinoMatrixButton::getPhysicalState() const
 {
   digitalWrite(m_colPin, LOW);
   uint8_t state = !digitalRead(m_rowPin);
