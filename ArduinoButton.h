@@ -15,6 +15,10 @@ public:
   ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow = true,
                 bool pullUp = true);
 
+  virtual ~ArduinoButton()
+  {
+  }
+
   /*!
    * \brief Gets the pin the button is attached to.
    * \return Pin number

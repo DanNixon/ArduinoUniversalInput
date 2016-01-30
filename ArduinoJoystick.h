@@ -14,6 +14,10 @@ class ArduinoJoystick : public IJoystick
 public:
   ArduinoJoystick(inputid_t id, inputpin_t adc);
 
+  virtual ~ArduinoJoystick()
+  {
+  }
+
 protected:
   inputanalog_t getPhysicalValue() const;
 

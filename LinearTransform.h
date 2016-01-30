@@ -25,6 +25,10 @@ public:
   {
   }
 
+  virtual ~LinearTransform()
+  {
+  }
+
   /*!
    * \copydoc IValueTransform::transform
    *
