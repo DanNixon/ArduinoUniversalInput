@@ -36,9 +36,6 @@ public:
    */
   inputanalog_t transform(inputanalog_t raw) const
   {
-    if (raw == 0)
-      return 0;
-
     return (raw - m_fromLow) * (m_toHigh - m_toLow) / (m_fromHigh - m_fromLow) +
            m_toLow;
   }
