@@ -7,6 +7,11 @@ addons:
     packages:
       - doxygen
 
+env:
+  global:
+    - GH_REF: github.com/DanNixon/ArduinoUniversalInput.git
+    - secure: "UmT3pNi1KOd79Lr32LxsmA4E2vhs65ateBkQEe17MwlEqIV0EUnPbWbvdrwZw7USFQDSuOvhHFMw0hOU5nJ03dK9OiALZUO82yaOa2yFDkFqtAfltocQyHkCGmz4K9k5XDjqPRWfw6KD8sxkvUFmz9ddC48GxhHfmqyowdW5Xwk="
+
 before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/adafruit/travis-ci-arduino/master/install.sh)
 
@@ -16,6 +21,7 @@ script:
   - build_platform arduino:avr:mega
   - build_platform esp8266
   - doxygen
+  - ./.travis_deploy_docs.sh
 
 notifications:
   email:
