@@ -25,9 +25,7 @@ public:
   {
   }
 
-  virtual ~LinearTransform()
-  {
-  }
+  virtual ~LinearTransform() {}
 
   /*!
    * \copydoc IValueTransform::transform
@@ -41,7 +39,7 @@ public:
   }
 
 private:
-  inputanalog_t m_toLow; //!< Lowest output value
+  inputanalog_t m_toLow;  //!< Lowest output value
   inputanalog_t m_toHigh; //!< Highest output value
 };
 

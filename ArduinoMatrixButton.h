@@ -14,9 +14,7 @@ class ArduinoMatrixButton : public IButton
 public:
   ArduinoMatrixButton(inputid_t id, inputpin_t colPin, inputpin_t rowPin);
 
-  virtual ~ArduinoMatrixButton()
-  {
-  }
+  virtual ~ArduinoMatrixButton() {}
 
   /*!
    * \brief Gets the pin attached to the matrix column for this button.

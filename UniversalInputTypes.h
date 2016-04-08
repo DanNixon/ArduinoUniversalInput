@@ -36,9 +36,9 @@ typedef int32_t inputanalog_t;
  */
 enum inputtype_t
 {
-  UIT_BUTTON, //!< Buttons inheriting from IButton
+  UIT_BUTTON,   //!< Buttons inheriting from IButton
   UIT_JOYSTICK, //!< Joysticks inheriting from IJoystick
-  UIT_ENCODER //!< Encoders
+  UIT_ENCODER   //!< Encoders
 };
 
 #endif

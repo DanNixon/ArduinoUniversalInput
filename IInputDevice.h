@@ -23,9 +23,7 @@ public:
   {
   }
 
-  virtual ~IInputDevice()
-  {
-  }
+  virtual ~IInputDevice() {}
 
   /*!
    * \brief Retrieves the ID of this device.

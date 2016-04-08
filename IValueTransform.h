@@ -23,9 +23,7 @@ public:
   {
   }
 
-  virtual ~IValueTransform()
-  {
-  };
+  virtual ~IValueTransform(){};
 
   /*!
    * \brief Perform the value transformation.
@@ -35,7 +33,7 @@ public:
   virtual inputanalog_t transform(inputanalog_t raw) const = 0;
 
 protected:
-  inputanalog_t m_fromLow; //!< Lowest input value
+  inputanalog_t m_fromLow;  //!< Lowest input value
   inputanalog_t m_fromHigh; //!< Highest input value
 };
 

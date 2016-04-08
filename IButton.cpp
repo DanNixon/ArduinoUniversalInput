@@ -16,9 +16,7 @@ IButton::IButton(inputid_t id, inputtime_t debounceDelay)
 {
 }
 
-IButton::~IButton()
-{
-}
+IButton::~IButton() {}
 
 /*!
  * \brief Sets the debounce delay time.

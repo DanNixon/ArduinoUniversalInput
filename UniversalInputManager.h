@@ -13,7 +13,7 @@
  */
 struct UIMListNode
 {
-  UIMListNode *next; //!< Pointer to next node
+  UIMListNode *next;    //!< Pointer to next node
   IInputDevice *device; //!< Pointer to input device
 };
 
@@ -54,12 +54,12 @@ public:
   bool addNewJoystick(inputid_t id, inputpin_t pin);
 
 private:
-  size_t m_numDevices; //!< Number of added devices
+  size_t m_numDevices;     //!< Number of added devices
   UIMListNode *m_listHead; //!< Pointer to the head node of the linked list
   IUniversalInputCallback *m_callback; //!< Callback handler
 
-  bool m_defaultActiveLow; //!< Default active low state for new buttons
-  bool m_defaultPullUp; //!< Default pull up state for new buttons
+  bool m_defaultActiveLow;       //!< Default active low state for new buttons
+  bool m_defaultPullUp;          //!< Default pull up state for new buttons
   inputtime_t m_defaultDebounce; //!< Defautl debounce time for new buttons
 };
 

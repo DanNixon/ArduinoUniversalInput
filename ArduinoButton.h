@@ -15,9 +15,7 @@ public:
   ArduinoButton(inputid_t id, inputpin_t pin, bool activeLow = true,
                 bool pullUp = true);
 
-  virtual ~ArduinoButton()
-  {
-  }
+  virtual ~ArduinoButton() {}
 
   /*!
    * \brief Gets the pin the button is attached to.
@@ -43,7 +41,7 @@ protected:
 private:
   inputpin_t m_pin; //!< Pin button is attached to
   bool m_activeLow; //!< If the button logic is active low
-  bool m_pullUp; //!< If the button pin is pulled up
+  bool m_pullUp;    //!< If the button pin is pulled up
 };
 
 #endif

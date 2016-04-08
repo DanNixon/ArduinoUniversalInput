@@ -33,7 +33,7 @@ public:
   inputanalog_t getRawValue() const { return m_value; }
 
   inputanalog_t getCentredValue() const;
-  inputanalog_t getValue() const ;
+  inputanalog_t getValue() const;
 
   void setTransformation(IValueTransform *transform);
 
