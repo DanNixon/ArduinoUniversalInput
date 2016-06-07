@@ -1,0 +1,12 @@
+{
+  "name": "Universal Inputs",
+  "keywords": "universal, input, manager",
+  "description": "Arduino library for reading multiple input devices of different types",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/DanNixon/ArduinoUniversalInput.git"
+  },
+  "frameworks": "arduino",
+  "platforms": ["atmelavr", "atmelsam", "espressif", "teensy"]
+}
