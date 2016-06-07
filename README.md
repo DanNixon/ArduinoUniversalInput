@@ -6,3 +6,9 @@ Arduino Universal Input
 A collection of libraries for managing/processing input devices on Arduino.
 
 Install by cloning this repo into your `sketchbook/libraries` directory.
+
+Also available through the library manager of the Arduino IDE as `Universal Inputs`.
+
+- CI: [https://travis-ci.org/DanNixon/ArduinoUniversalInput](https://travis-ci.org/DanNixon/ArduinoUniversalInput)
+- Documentaton: [http://www.dan-nixon.com/ArduinoUniversalInput](http://www.dan-nixon.com/ArduinoUniversalInput)
+- Repository: [https://github.com/DanNixon/ArduinoUniversalInput](https://github.com/DanNixon/ArduinoUniversalInput)
