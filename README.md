@@ -12,4 +12,4 @@ Also available through the library manager of the Arduino IDE as `Universal Inpu
 
 - Repository: https://github.com/DanNixon/ArduinoUniversalInput
 - Travis CI: https://travis-ci.org/DanNixon/ArduinoUniversalInput
-- Documentaton: http://dannixon.github.io/ArduinoUniversalInput
+- Documentaton: https://dannixon.github.io/ArduinoUniversalInput
