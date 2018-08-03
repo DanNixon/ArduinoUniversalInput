@@ -16,7 +16,7 @@ before_install:
 script:
   - build_platform uno
   - build_platform leonardo
-  - build_platform arduino:avr:mega
+  - build_platform 'arduino:avr:mega:cpu=atmega2560'
   - build_platform esp8266
   - doxygen
   - ./.travis_deploy_docs.sh
