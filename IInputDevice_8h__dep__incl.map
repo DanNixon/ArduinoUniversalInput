@@ -1,0 +1,14 @@
+<map id="IInputDevice.h" name="IInputDevice.h">
+<area shape="rect" id="node2" href="$IButton_8h.html" title="IButton.h" alt="" coords="251,80,324,107"/>
+<area shape="rect" id="node9" href="$IJoystick_8h.html" title="IJoystick.h" alt="" coords="541,80,627,107"/>
+<area shape="rect" id="node13" href="$UniversalInputManager_8h.html" title="UniversalInputManager.h" alt="" coords="350,80,516,107"/>
+<area shape="rect" id="node3" href="$ArduinoButton_8h.html" title="ArduinoButton.h" alt="" coords="199,155,313,181"/>
+<area shape="rect" id="node6" href="$ArduinoMatrixButton_8h.html" title="ArduinoMatrixButton.h" alt="" coords="19,155,169,181"/>
+<area shape="rect" id="node8" href="$IButton_8cpp.html" title="IButton.cpp" alt="" coords="338,155,427,181"/>
+<area shape="rect" id="node4" href="$ArduinoButton_8cpp.html" title="ArduinoButton.cpp" alt="" coords="195,229,324,256"/>
+<area shape="rect" id="node5" href="$UniversalInputManager_8cpp.html" title="UniversalInputManager.cpp" alt="" coords="375,229,556,256"/>
+<area shape="rect" id="node7" href="$ArduinoMatrixButton_8cpp.html" title="ArduinoMatrixButton.cpp" alt="" coords="5,229,169,256"/>
+<area shape="rect" id="node10" href="$ArduinoJoystick_8h.html" title="ArduinoJoystick.h" alt="" coords="627,155,753,181"/>
+<area shape="rect" id="node12" href="$IJoystick_8cpp.html" title="IJoystick.cpp" alt="" coords="503,155,603,181"/>
+<area shape="rect" id="node11" href="$ArduinoJoystick_8cpp.html" title="ArduinoJoystick.cpp" alt="" coords="621,229,760,256"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="IJoystick" name="IJoystick">
+<area shape="rect" id="node3" href="$classArduinoJoystick.html" title="Represents a joystick attached to an Arduino ADC pin. " alt="" coords="5,155,120,181"/>
+<area shape="rect" id="node2" href="$classIInputDevice.html" title="Represents an input device. " alt="" coords="15,5,111,32"/>
+</map>

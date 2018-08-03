@@ -1,0 +1,4 @@
+<map id="ArduinoButton" name="ArduinoButton">
+<area shape="rect" id="node2" href="$classIButton.html" title="Represents a two state button. " alt="" coords="25,80,89,107"/>
+<area shape="rect" id="node3" href="$classIInputDevice.html" title="Represents an input device. " alt="" coords="9,5,105,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="IButton" name="IButton">
+<area shape="rect" id="node3" href="$classArduinoButton.html" title="Represents a button on an Arduino pin. " alt="" coords="5,155,109,181"/>
+<area shape="rect" id="node4" href="$classArduinoMatrixButton.html" title="Represents a single button in a matrix configuration. " alt="" coords="134,155,273,181"/>
+<area shape="rect" id="node2" href="$classIInputDevice.html" title="Represents an input device. " alt="" coords="83,5,179,32"/>
+</map>

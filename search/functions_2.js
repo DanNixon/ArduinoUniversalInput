@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['getcentredeadband',['getCentreDeadband',['../classIJoystick.html#aa139997911fd9949890f2261829ad23e',1,'IJoystick']]],
+  ['getcentredvalue',['getCentredValue',['../classIJoystick.html#a13bc879805015a060979aebf45588cd4',1,'IJoystick']]],
+  ['getcentrepoint',['getCentrePoint',['../classIJoystick.html#aec1bc7f134141ea68f3c6308bb62397a',1,'IJoystick']]],
+  ['getcolpin',['getColPin',['../classArduinoMatrixButton.html#a95f8f3017954b5abeb2d3f1de8812bd3',1,'ArduinoMatrixButton']]],
+  ['getdebouncedelay',['getDebounceDelay',['../classIButton.html#a808fba9d72a416febd5c93372d41b9a0',1,'IButton']]],
+  ['getdevice',['getDevice',['../classUniversalInputManager.html#adf6b92bb207cdb9fb67b4b1e16f95aaa',1,'UniversalInputManager']]],
+  ['gethighdeadband',['getHighDeadband',['../classIJoystick.html#af155a0581ac9b439f037e8363ef63154',1,'IJoystick']]],
+  ['gethighpoint',['getHighPoint',['../classIJoystick.html#a1259887739ba2b9a92f9915daba5e437',1,'IJoystick']]],
+  ['getid',['getID',['../classIInputDevice.html#aed2105502f118023072cffc86364a07b',1,'IInputDevice']]],
+  ['getlowdeadband',['getLowDeadband',['../classIJoystick.html#ae51b3af15e65c71fa6d27b34f8728b3a',1,'IJoystick']]],
+  ['getlowpoint',['getLowPoint',['../classIJoystick.html#ab51e3016d018b141daf61637f9cb5d4b',1,'IJoystick']]],
+  ['getphysicalstate',['getPhysicalState',['../classArduinoButton.html#afee15944b4ef8d74c683da2bf6f082a9',1,'ArduinoButton::getPhysicalState()'],['../classArduinoMatrixButton.html#a64fe88cb21de2250b0e7af289609369b',1,'ArduinoMatrixButton::getPhysicalState()'],['../classIButton.html#a8c5f2a78f6ab3fb979a611680b0a9d39',1,'IButton::getPhysicalState()']]],
+  ['getphysicalvalue',['getPhysicalValue',['../classArduinoJoystick.html#a7617dc42b05d0fc723eedd593b352041',1,'ArduinoJoystick::getPhysicalValue()'],['../classIJoystick.html#a9c5a47f623eacf496d6dfff9f1390a6b',1,'IJoystick::getPhysicalValue()']]],
+  ['getpin',['getPin',['../classArduinoButton.html#a7f6434b7b0e6fc3c13d53f93be646031',1,'ArduinoButton']]],
+  ['getrawvalue',['getRawValue',['../classIJoystick.html#a548a7f500731c488ca166058bcfb1d3e',1,'IJoystick']]],
+  ['getrowpin',['getRowPin',['../classArduinoMatrixButton.html#ac94724287a2290e8a324c3b4c2b00193',1,'ArduinoMatrixButton']]],
+  ['getthreshold',['getThreshold',['../classIJoystick.html#a86835cc15544bd2141aa2e5560271ced',1,'IJoystick']]],
+  ['getvalue',['getValue',['../classIJoystick.html#a8703ba506627f8f415b8eb50289f8ba8',1,'IJoystick']]]
+];

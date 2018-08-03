@@ -1,0 +1,7 @@
+<map id="IInputDevice" name="IInputDevice">
+<area shape="rect" id="node2" href="$classIButton.html" title="Represents a two state button. " alt="" coords="172,80,236,107"/>
+<area shape="rect" id="node5" href="$classIJoystick.html" title="Represents a joystick or potentiometer. " alt="" coords="289,80,363,107"/>
+<area shape="rect" id="node3" href="$classArduinoButton.html" title="Represents a button on an Arduino pin. " alt="" coords="5,155,109,181"/>
+<area shape="rect" id="node4" href="$classArduinoMatrixButton.html" title="Represents a single button in a matrix configuration. " alt="" coords="134,155,273,181"/>
+<area shape="rect" id="node6" href="$classArduinoJoystick.html" title="Represents a joystick attached to an Arduino ADC pin. " alt="" coords="299,155,413,181"/>
+</map>
